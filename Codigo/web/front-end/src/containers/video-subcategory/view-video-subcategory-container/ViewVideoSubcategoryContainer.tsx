@@ -22,7 +22,7 @@ const ViewVideoSubcategoryContainer = (props: RouteComponentProps) => {
 	};
 
 	const editVideoSubcategoriesHandler = (videoSubcategoryId: string) => {
-		props.history.push("/subcategoria-video/" + videoSubcategoryId);
+		props.history.push("/subcategoria-video/editar/" + videoSubcategoryId);
 	};
 
 	const deleteVideoSubcategoriesHandler = async (

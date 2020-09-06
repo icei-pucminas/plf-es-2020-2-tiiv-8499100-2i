@@ -20,7 +20,7 @@ const ViewAdContainer = (props: RouteComponentProps) => {
 	};
 
 	const editAdsHandler = (adId: string) => {
-		props.history.push("/anuncio/" + adId);
+		props.history.push("/anuncio/editar/" + adId);
 	};
 
 	const deleteAdHandler = async (adId: string) => {
@@ -34,11 +34,7 @@ const ViewAdContainer = (props: RouteComponentProps) => {
 
 	const adsEls = ads?.map((ad: AdType) => (
 		<div key={ad.ad_id}>
-			<AdCard
-				ad={ad}
-				editAd={editAdsHandler}
-				deleteAd={deleteAdHandler}
-			/>
+			<AdCard ad={ad} editAd={editAdsHandler} deleteAd={deleteAdHandler} />
 			<Spacer vertical={40} />
 		</div>
 	));

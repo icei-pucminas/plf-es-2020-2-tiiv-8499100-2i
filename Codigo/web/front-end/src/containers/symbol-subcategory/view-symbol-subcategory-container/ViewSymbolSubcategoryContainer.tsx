@@ -22,7 +22,7 @@ const ViewSymbolSubcategoryContainer = (props: RouteComponentProps) => {
 	};
 
 	const editSymbolSubcategoriesHandler = (symbolSubcategoryId: string) => {
-		props.history.push("/subcategoria-simbolo/" + symbolSubcategoryId);
+		props.history.push("/subcategoria-simbolo/editar/" + symbolSubcategoryId);
 	};
 
 	const deleteSymbolSubcategoriesHandler = async (

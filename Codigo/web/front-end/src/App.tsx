@@ -5,41 +5,32 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { store } from "./store/index";
 
 import ViewAuthorContainer from "./containers/author/view-author-container/ViewAuthorContainer";
-import NewAuthorContainer from "./containers/author/new-author-container/NewAuthorContainer";
-import NewPostContainer from "./containers/post/new-post-container/NewPostContainer";
-import NewSymbolContainer from "./containers/symbol/new-symbol-container/NewSymbolContainer";
+import AuthorContainer from "./containers/author/author-container/AuthorContainer";
 import Header from "./layout/header/Header";
 import Card from "./components/card/Card";
 import Body from "./layout/body/Body";
-import EditAuthorContainer from "./containers/author/edit-author-container/EditAuthorContainer";
 import ViewPostContainer from "./containers/post/view-post-container/ViewPostContainer";
-import EditPostContainer from "./containers/post/edit-post-container/EditPostContainer";
 import ViewSymbolContainer from "./containers/symbol/view-symbol-container/ViewSymbolContainer";
-import EditSymbolContainer from "./containers/symbol/edit-symbol-container/EditSymbolContainer";
-import NewVideoContainer from "./containers/video/new-video-container/NewVideoContainer";
-import EditVideoContainer from "./containers/video/edit-video-container/EditVideoContainer";
 import ViewVideoContainer from "./containers/video/view-video-container/ViewVideoContainer";
 import HomeContainer from "./containers/home-container/HomeContainer";
 import LoginContainer from "./containers/login-container/LoginContainer";
-import NewSymbolCategoryContainer from "./containers/symbol-category/new-symbol-category-container/NewSymbolCategoryContainer";
-import EditSymbolCategoryContainer from "./containers/symbol-category/edit-symbol-category-container/EditSymbolCategoryContainer";
-import NewSymbolSubcategoryContainer from "./containers/symbol-subcategory/new-symbol-subcategory-container/NewSymbolSubcategoryContainer";
-import EditSymbolSubcategoryContainer from "./containers/symbol-subcategory/edit-symbol-subcategory-container/EditSymbolSubcategoryContainer";
-import NewVideoCategoryContainer from "./containers/video-category/new-video-category-container/NewVideoCategoryContainer";
-import EditVideoCategoryContainer from "./containers/video-category/edit-video-category-container/EditVideoCategoryContainer";
+import VideoCategoryContainer from "./containers/video-category/video-category-container/VideoCategoryContainer";
 import ViewSymbolCategoryContainer from "./containers/symbol-category/view-symbol-category-container/ViewSymbolCategoryContainer";
 import ViewSymbolSubcategoryContainer from "./containers/symbol-subcategory/view-symbol-subcategory-container/ViewSymbolSubcategoryContainer";
 import ViewVideoCategoryContainer from "./containers/video-category/view-video-category-container/ViewVideoCategoryContainer";
 import ViewVideoSubcategoryContainer from "./containers/video-subcategory/view-video-subcategory-container/ViewVideoSubcategoryContainer";
-import NewVideoSubcategoryContainer from "./containers/video-subcategory/new-video-subcategory-container/NewVideoSubcategoryContainer";
+import VideoSubcategoryContainer from "./containers/video-subcategory/video-subcategory-container/VideoSubcategoryContainer";
 import ViewAdContainer from "./containers/ad/view-ad-container/ViewAdContainer";
-import NewAdContainer from "./containers/ad/new-ad-container/NewAdContainer";
-import EditVideoSubcategoryContainer from "./containers/video-subcategory/edit-video-subcategory-container/EditVideoSubcategoryContainer";
+import AdContainer from "./containers/ad/ad-container/AdContainer";
 import requiresAuth from "./hoc/requiresAuth";
-import EditAdContainer from "./containers/ad/edit-ad-container/EditAdContainer";
 import StatsGeneral from "./containers/stats-general/StatsGeneral";
 import ViewForumPostsContainer from "./containers/forum/ViewForumPostsContainer";
 import ViewForumContainer from "./containers/forum/ViewForumContainer";
+import PostContainer from "./containers/post/post-container/PostContainer";
+import SymbolContainer from "./containers/symbol/symbol-container/SymbolContainer";
+import SymbolCategoryContainer from "./containers/symbol-category/symbol-category-container/SymbolCategoryContainer";
+import SymbolSubcategoryContainer from "./containers/symbol-subcategory/symbol-subcategory-container/SymbolSubcategoryContainer";
+import VideoContainer from "./containers/video/video-container/VideoContainer";
 
 const App = () => {
 	return (
@@ -51,59 +42,44 @@ const App = () => {
 						<Switch>
 							<Route
 								path="/post/novo"
-								component={requiresAuth(NewPostContainer)}
+								component={requiresAuth(PostContainer)}
 							/>
 							<Route
-								path="/post/:postId"
-								component={requiresAuth(EditPostContainer)}
+								path="/post/editar/:postId"
+								component={requiresAuth(PostContainer)}
 							/>
-							<Route
-								path="/post"
-								component={requiresAuth(ViewPostContainer)}
-							/>
+							<Route path="/post" component={requiresAuth(ViewPostContainer)} />
 							<Route
 								path="/simbolo/novo"
-								component={requiresAuth(NewSymbolContainer)}
+								component={requiresAuth(SymbolContainer)}
 							/>
 							<Route
-								path="/simbolo/:symbolId"
-								component={requiresAuth(EditSymbolContainer)}
+								path="/simbolo/editar/:symbolId"
+								component={requiresAuth(SymbolContainer)}
 							/>
 							<Route
 								path="/categoria-simbolo/novo"
-								component={requiresAuth(
-									NewSymbolCategoryContainer
-								)}
+								component={requiresAuth(SymbolCategoryContainer)}
 							/>
 							<Route
-								path="/categoria-simbolo/:symbolCategoryId"
-								component={requiresAuth(
-									EditSymbolCategoryContainer
-								)}
+								path="/categoria-simbolo/editar/:symbolCategoryId"
+								component={requiresAuth(SymbolCategoryContainer)}
 							/>
 							<Route
 								path="/categoria-simbolo"
-								component={requiresAuth(
-									ViewSymbolCategoryContainer
-								)}
+								component={requiresAuth(ViewSymbolCategoryContainer)}
 							/>
 							<Route
 								path="/subcategoria-simbolo/novo"
-								component={requiresAuth(
-									NewSymbolSubcategoryContainer
-								)}
+								component={requiresAuth(SymbolSubcategoryContainer)}
 							/>
 							<Route
-								path="/subcategoria-simbolo/:symbolSubcategoryId"
-								component={requiresAuth(
-									EditSymbolSubcategoryContainer
-								)}
+								path="/subcategoria-simbolo/editar/:symbolSubcategoryId"
+								component={requiresAuth(SymbolSubcategoryContainer)}
 							/>
 							<Route
 								path="/subcategoria-simbolo"
-								component={requiresAuth(
-									ViewSymbolSubcategoryContainer
-								)}
+								component={requiresAuth(ViewSymbolSubcategoryContainer)}
 							/>
 							<Route
 								path="/simbolo"
@@ -111,11 +87,11 @@ const App = () => {
 							/>
 							<Route
 								path="/autor/novo"
-								component={requiresAuth(NewAuthorContainer)}
+								component={requiresAuth(AuthorContainer)}
 							/>
 							<Route
-								path="/autor/:authorId"
-								component={requiresAuth(EditAuthorContainer)}
+								path="/autor/editar/:authorId"
+								component={requiresAuth(AuthorContainer)}
 							/>
 							<Route
 								path="/autor"
@@ -123,11 +99,11 @@ const App = () => {
 							/>
 							<Route
 								path="/video/novo"
-								component={requiresAuth(NewVideoContainer)}
+								component={requiresAuth(VideoContainer)}
 							/>
 							<Route
-								path="/video/:videoId"
-								component={requiresAuth(EditVideoContainer)}
+								path="/video/editar/:videoId"
+								component={requiresAuth(VideoContainer)}
 							/>
 							<Route
 								path="/video"
@@ -135,47 +111,35 @@ const App = () => {
 							/>
 							<Route
 								path="/categoria-video/novo"
-								component={requiresAuth(
-									NewVideoCategoryContainer
-								)}
+								component={requiresAuth(VideoCategoryContainer)}
 							/>
 							<Route
-								path="/categoria-video/:videoCategoryId"
-								component={requiresAuth(
-									EditVideoCategoryContainer
-								)}
+								path="/categoria-video/editar/:videoCategoryId"
+								component={requiresAuth(VideoCategoryContainer)}
 							/>
 							<Route
 								path="/categoria-video"
-								component={requiresAuth(
-									ViewVideoCategoryContainer
-								)}
+								component={requiresAuth(ViewVideoCategoryContainer)}
 							/>
 							<Route
 								path="/subcategoria-video/novo"
-								component={requiresAuth(
-									NewVideoSubcategoryContainer
-								)}
+								component={requiresAuth(VideoSubcategoryContainer)}
 							/>
 							<Route
-								path="/subcategoria-video/:videoSubcategoryId"
-								component={requiresAuth(
-									EditVideoSubcategoryContainer
-								)}
+								path="/subcategoria-video/editar/:videoSubcategoryId"
+								component={requiresAuth(VideoSubcategoryContainer)}
 							/>
 							<Route
 								path="/subcategoria-video"
-								component={requiresAuth(
-									ViewVideoSubcategoryContainer
-								)}
+								component={requiresAuth(ViewVideoSubcategoryContainer)}
 							/>
 							<Route
 								path="/anuncio/novo"
-								component={requiresAuth(NewAdContainer)}
+								component={requiresAuth(AdContainer)}
 							/>
 							<Route
-								path="/anuncio/:adId"
-								component={EditAdContainer}
+								path="/anuncio/editar/:adId"
+								component={requiresAuth(AdContainer)}
 							/>
 							<Route
 								path="/anuncio"
@@ -183,23 +147,15 @@ const App = () => {
 							/>
 							<Route
 								path="/forum/:forumId"
-								component={requiresAuth(
-									ViewForumPostsContainer
-								)}
+								component={requiresAuth(ViewForumPostsContainer)}
 							/>
 							<Route
 								path="/forum"
 								component={requiresAuth(ViewForumContainer)}
 							/>
-							<Route
-								path="/estatisticas-gerais"
-								component={StatsGeneral}
-							/>
+							<Route path="/estatisticas-gerais" component={StatsGeneral} />
 							<Route path="/login" component={LoginContainer} />
-							<Route
-								path="/"
-								component={requiresAuth(HomeContainer)}
-							/>
+							<Route path="/" component={requiresAuth(HomeContainer)} />
 						</Switch>
 					</Card>
 				</Body>

@@ -23,7 +23,7 @@ const ViewPostContainer = (props: RouteComponentProps) => {
 	};
 
 	const editPostHandler = (postId: string) => {
-		props.history.push("/post/" + postId);
+		props.history.push("/post/editar/" + postId);
 	};
 
 	const deletePostHandler = async (postId: string) => {

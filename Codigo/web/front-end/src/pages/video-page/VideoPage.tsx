@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, useState, useEffect } from "react";
 import { FormEvent } from "react";
 import { Link } from "react-router-dom";
 
@@ -8,9 +8,10 @@ import Row from "../../layout/row/Row";
 import TextField from "../../components/text-field/TextField";
 import Spacer from "../../layout/spacer/Spacer";
 import Button from "../../components/button/Button";
-import { VideoCategoryType } from "../../types/category";
+import { VideoSubcategoryType } from "../../types/category";
 import Dropdown from "../../components/dropdown/Dropdown";
 import Video from "../../components/video/Video";
+import { youtubeAPI } from "../../api/api";
 
 type PropsType = {
 	onSubmit: (event: FormEvent<HTMLFormElement>) => void;
@@ -19,16 +20,66 @@ type PropsType = {
 	) => void;
 	type: "new" | "update";
 	video: VideoType;
-	videoID: string;
-	videoCategories: VideoCategoryType[];
+	videoSubcategories: VideoSubcategoryType[];
 };
 
 const VideoPage = (props: PropsType) => {
+	const [title, setTitle] = useState("");
+	const [date, setDate] = useState("");
+	const [ytId, setYtId] = useState("");
+
+	useEffect(() => {
+		if (props.video.youtube_url) {
+			fetchYoutubeInfo(props.video.youtube_url);
+
+			return;
+		}
+	}, [props.video]);
+
+	const fetchYoutubeInfo = async (urlString: string) => {
+		try {
+			const url = new URL(urlString);
+
+			const ytId = url.searchParams.get("v")!;
+			const ytSearch = (await youtubeAPI.searchVideo(ytId)) as any;
+
+			const title = ytSearch.items[0].snippet.title ?? "";
+			const date = ytSearch.items[0].snippet.publishedAt ?? "";
+
+			setTitle(title);
+			setDate(date);
+			setYtId(ytId);
+		} catch {
+			setTitle("");
+			setDate("");
+			setYtId("");
+		}
+	};
+
+	const onChangeInputHandler = (
+		event: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+	) => {
+		props.onChangeInput(event);
+		fetchYoutubeInfo(event.target.value);
+	};
+
 	return (
 		<form onSubmit={props.onSubmit}>
+			<input
+				type="hidden"
+				id="title"
+				value={title}
+				onChange={props.onChangeInput}
+			/>
+			<input
+				type="hidden"
+				id="date"
+				value={date}
+				onChange={props.onChangeInput}
+			/>
 			<Column align="center">
 				<Row>
-					<Video videoID={props.videoID} />
+					<Video videoID={ytId} />
 				</Row>
 				<Row>
 					<TextField
@@ -37,7 +88,7 @@ const VideoPage = (props: PropsType) => {
 							id: "youtube_url",
 							placeholder:
 								"Exemplo: https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-							onChange: props.onChangeInput,
+							onChange: onChangeInputHandler,
 							value: props.video.youtube_url,
 						}}
 					/>
@@ -46,9 +97,9 @@ const VideoPage = (props: PropsType) => {
 				<Row>
 					<Dropdown
 						label="Selecione uma subcategoria..."
-						options={props.videoCategories?.map((c) => ({
+						options={props.videoSubcategories?.map((c) => ({
 							label: c.name,
-							value: c.video_category_id,
+							value: c.video_sub_category_id,
 						}))}
 						inputAttrs={{
 							id: "category_id",
@@ -58,9 +109,7 @@ const VideoPage = (props: PropsType) => {
 					/>
 				</Row>
 				<Spacer vertical={40} />
-				<Link to="/subcategoria-video">
-					Gerenciar subcategorias de vídeos
-				</Link>
+				<Link to="/subcategoria-video">Gerenciar subcategorias de vídeos</Link>
 				<Spacer vertical={40} />
 				<Button
 					label={

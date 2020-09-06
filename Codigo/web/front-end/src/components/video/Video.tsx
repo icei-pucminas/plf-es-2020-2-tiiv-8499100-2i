@@ -15,7 +15,7 @@ const Video = (props: PropsType) => {
 		<iframe
 			title="video"
 			id="ytplayer"
-			src={`https://www.youtube.com/embed/${props.videoID}?autoplay=1&origin=${window.location.origin}`}
+			src={`https://www.youtube.com/embed/${props.videoID}?autoplay=0&origin=${window.location.origin}`}
 			allow="fullscreen"
 			frameBorder="0"
 			className={classes["video"]}

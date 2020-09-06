@@ -21,7 +21,7 @@ const ViewAuthorContainer = (props: RouteComponentProps) => {
 	};
 
 	const editAuthorHandler = (authorId: string) => {
-		props.history.push("/author/" + authorId);
+		props.history.push("/autor/editar/" + authorId);
 	};
 
 	const deleteAuthorHandler = async (authorId: string) => {

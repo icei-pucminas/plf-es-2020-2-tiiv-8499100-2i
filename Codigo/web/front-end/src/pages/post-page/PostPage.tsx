@@ -43,8 +43,7 @@ const PostPage = (props: PropsType) => (
 					label="Título do post"
 					inputAttrs={{
 						id: "title",
-						placeholder:
-							"Exemplo: Os 10 maiores benefícios da GD&T",
+						placeholder: "Exemplo: Os 10 maiores benefícios da GD&T",
 						onChange: props.onChangeInput,
 						value: props.post.title,
 					}}
@@ -56,8 +55,7 @@ const PostPage = (props: PropsType) => (
 					label="Conteúdo do post"
 					inputAttrs={{
 						id: "body",
-						placeholder:
-							"Exemplo: Os 10 maiores benefícios do GD&T são...",
+						placeholder: "Exemplo: Os 10 maiores benefícios do GD&T são...",
 						onChange: props.onChangeTextArea,
 						value: props.post.body,
 					}}

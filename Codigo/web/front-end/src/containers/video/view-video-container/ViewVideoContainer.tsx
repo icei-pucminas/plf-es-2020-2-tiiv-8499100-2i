@@ -25,7 +25,7 @@ const ViewVideoContainer = (props: RouteComponentProps) => {
 	};
 
 	const editVideoHandler = (videoId: string) => {
-		props.history.push("/video/" + videoId);
+		props.history.push("/video/editar/" + videoId);
 	};
 
 	const deleteVideoHandler = async (videoId: string) => {
@@ -60,9 +60,7 @@ const ViewVideoContainer = (props: RouteComponentProps) => {
 			{status === "loading" ? (
 				<Spinner />
 			) : status === "success" ? (
-				<div className={classes["videoCardsContainer"]}>
-					{videosEls}
-				</div>
+				<div className={classes["videoCardsContainer"]}>{videosEls}</div>
 			) : status === "error" ? (
 				"error"
 			) : null}

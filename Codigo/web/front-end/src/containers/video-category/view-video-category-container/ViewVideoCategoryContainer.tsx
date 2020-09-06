@@ -22,7 +22,7 @@ const ViewVideoCategoryContainer = (props: RouteComponentProps) => {
 	};
 
 	const editVideoCategoriesHandler = (videoCategoryId: string) => {
-		props.history.push("/categoria-video/" + videoCategoryId);
+		props.history.push("/categoria-video/editar/" + videoCategoryId);
 	};
 
 	const deleteVideoCategoriesHandler = async (videoCategoryId: string) => {

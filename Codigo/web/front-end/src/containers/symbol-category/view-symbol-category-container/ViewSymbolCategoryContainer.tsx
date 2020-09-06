@@ -23,7 +23,7 @@ const ViewSymbolCategoryContainer = (props: RouteComponentProps) => {
 	};
 
 	const editSymbolSubcategoryHandler = (symbolCategoryId: string) => {
-		props.history.push("/categoria-simbolo/" + symbolCategoryId);
+		props.history.push("/categoria-simbolo/editar/" + symbolCategoryId);
 	};
 
 	const deleteSymbolSubcategoryHandler = async (symbolCategoryId: string) => {

@@ -24,7 +24,7 @@ const ViewSymbolContainer = (props: RouteComponentProps) => {
 	};
 
 	const editSymbolHandler = (symbolId: string) => {
-		props.history.push("/simbolo/" + symbolId);
+		props.history.push("/simbolo/editar/" + symbolId);
 	};
 
 	const deleteSymbolHandler = async (symbolId: string) => {
@@ -59,9 +59,7 @@ const ViewSymbolContainer = (props: RouteComponentProps) => {
 			{status === "loading" ? (
 				<Spinner />
 			) : status === "success" ? (
-				<div className={classes["symbolCardsContainer"]}>
-					{symbolsEls}
-				</div>
+				<div className={classes["symbolCardsContainer"]}>{symbolsEls}</div>
 			) : status === "error" ? (
 				"error"
 			) : null}
