@@ -1,6 +1,6 @@
 # Artefatos do projeto
 
-Este diretório mantém os artefatos do projeto. 
+<!-- Este diretório mantém os artefatos do projeto. 
 
 
 Liste os artefatos produzidos, com suas localizações e descrição do conteúdo.
@@ -13,4 +13,9 @@ Pode-se também criar um diretório "canvas", que seria descrito da seguinte for
 * `/canvas`
 	* **BusinessModelCanvas.pdf**: Canvas do modelo de negócios.
 
-Assim, sucessivamente para outros artefatos como `processos` e `DER`, etc.
+Assim, sucessivamente para outros artefatos como `processos` e `DER`, etc. -->
+
+* atas: atas de reuniões
+* canvas: Canvas do projeto
+* documentos: documentos do projeto
+* `2i.vpp`: arquivo do VisualParadigm do projeto, contendo os diagramas de casos de uso, classes, etc.
