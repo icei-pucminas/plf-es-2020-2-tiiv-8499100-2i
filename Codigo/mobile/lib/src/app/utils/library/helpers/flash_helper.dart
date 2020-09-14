@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:inteligenciaindustrialapp/src/app/utils/styles/colors_style.dart';
 
 class FlashHelper {
   static Completer<BuildContext> _buildCompleter = Completer<BuildContext>();
@@ -177,15 +178,7 @@ class FlashHelper {
     );
   }
 
-  static Future<T> simpleDialog<T>(
-    BuildContext context, {
-    String title,
-    @required String message,
-    Widget negativeAction,
-    ActionCallback negativeActionTap,
-    Widget positiveAction,
-    ActionCallback positiveActionTap,
-  }) {
+  static Future<T> simpleDialog<T>(BuildContext context) {
     return showFlash<T>(
       context: context,
       persistent: false,
@@ -196,26 +189,60 @@ class FlashHelper {
           margin: const EdgeInsets.only(left: 40.0, right: 40.0),
           borderRadius: const BorderRadius.all(Radius.circular(8.0)),
           child: FlashBar(
-            title:
-                title == null ? null : Text(title, style: _titleStyle(context)),
-            message: Text(message, style: _contentStyle(context)),
+            title: Text('oi'),
+            message: Text('oi'),
             actions: <Widget>[
-              if (negativeAction != null)
-                FlatButton(
-                  child: negativeAction,
-                  onPressed: negativeActionTap == null
-                      ? null
-                      : () => negativeActionTap(controller),
-                ),
-              if (positiveAction != null)
-                FlatButton(
-                  child: positiveAction,
-                  onPressed: positiveActionTap == null
-                      ? null
-                      : () => positiveActionTap(controller),
-                ),
+              FlatButton(
+                  child: Text('nada'),
+                  onPressed: () {
+                    controller.dismiss();
+                  })
             ],
           ),
+        );
+      },
+    );
+  }
+
+  static Future<T> videoDialog<T>(
+    BuildContext context, {
+    Widget body,
+    ActionCallback negativeActionTap,
+    Widget positiveAction,
+    ActionCallback positiveActionTap,
+  }) {
+    return showFlash<T>(
+      context: context,
+      persistent: true,
+      builder: (context, controller) {
+        return Stack(
+          children: <Widget>[
+            GestureDetector(
+              onTap: () {
+                controller.dismiss();
+              },
+              child: Opacity(
+                opacity: 0.4,
+                child: SizedBox.expand(
+                  child: Container(
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 20, right: 20),
+              child: Flash(
+                controller: controller,
+                barrierDismissible: true,
+                backgroundColor: ColorsStyle.background,
+                alignment: Alignment.center,
+                style: null,
+                position: null,
+                child: body,
+              ),
+            ),
+          ],
         );
       },
     );
@@ -285,6 +312,55 @@ class FlashHelper {
               },
               icon: Icon(Icons.send, color: theme.colorScheme.secondary),
             ),
+          ),
+        );
+      },
+    );
+  }
+
+  static showToast(BuildContext context, bool success, String message) {
+    showFlash(
+      context: context,
+      duration: const Duration(seconds: 6),
+      persistent: true,
+      builder: (_, controller) {
+        return Flash(
+          controller: controller,
+          backgroundColor: success ? ColorsStyle.green : ColorsStyle.red,
+          barrierColor: Colors.black38,
+          barrierDismissible: true,
+          style: FlashStyle.floating,
+          position: FlashPosition.top,
+          borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(8), bottomRight: Radius.circular(8)),
+          child: FlashBar(
+            message: Row(
+              children: <Widget>[
+                Icon(
+                  success ? Icons.check_circle : Icons.warning,
+                  color:
+                      success ? ColorsStyle.greenLight : ColorsStyle.redLight,
+                ),
+                SizedBox(
+                  width: 16,
+                ),
+                Flexible(
+                  child: Text(
+                    message,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            showProgressIndicator: true,
+            progressIndicatorBackgroundColor:
+                success ? ColorsStyle.greenDark : ColorsStyle.red,
+            progressIndicatorValueColor: AlwaysStoppedAnimation<Color>(
+                success ? ColorsStyle.greenLight2 : ColorsStyle.redLight),
           ),
         );
       },

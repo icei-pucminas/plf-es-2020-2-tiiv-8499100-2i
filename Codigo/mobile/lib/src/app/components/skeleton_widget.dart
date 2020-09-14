@@ -66,9 +66,9 @@ class SkeletonWidgetState extends State<SkeletonWidget>
             // ColorsStyle.background.withOpacity(0.4),
             // ColorsStyle.background.withOpacity(1.0),
             // ColorsStyle.background.withOpacity(0.4)
-            ColorsStyle.orange.withOpacity(0.2),
-            ColorsStyle.orange.withOpacity(0.4),
-            ColorsStyle.orange.withOpacity(0.2)
+            ColorsStyle.grayDark.withOpacity(0.2),
+            ColorsStyle.grayDark.withOpacity(0.4),
+            ColorsStyle.grayDark.withOpacity(0.2)
           ],
         ),
         // borderRadius: BorderRadius.all(

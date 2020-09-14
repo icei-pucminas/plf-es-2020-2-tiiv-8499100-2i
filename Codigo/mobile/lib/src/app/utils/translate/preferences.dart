@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 const String _storageKey = "Appli_";
@@ -38,12 +39,12 @@ class Preferences {
     return _setApplicationSavedInformation('language', lang);
   }
 
-  getKioskMode() async {
+  getViewedIntro() async {
     final SharedPreferences prefs = await _prefs;
-    return prefs.getBool(_storageKey + 'kioskMode') ?? false;
+    return prefs.getBool(_storageKey + 'intro') ?? false;
   }
 
-  setKioskMode(bool value) async {
+  setViewedIntro(bool value) async {
     final SharedPreferences prefs = await _prefs;
     return prefs.setBool(_storageKey + 'kioskMode', value);
   }

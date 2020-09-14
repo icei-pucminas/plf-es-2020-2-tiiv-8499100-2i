@@ -39,9 +39,9 @@ class _LoadingScreenState extends State<LoadingScreen> {
                     child: Center(
                       child: CircularProgressIndicator(
                         valueColor: AlwaysStoppedAnimation(
-                          ColorsStyle.orange,
+                          ColorsStyle.blue,
                         ),
-                        backgroundColor: ColorsStyle.orangeLight,
+                        backgroundColor: ColorsStyle.blueLight,
                       ),
                     ),
                   )

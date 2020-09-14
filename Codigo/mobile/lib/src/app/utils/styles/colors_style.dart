@@ -7,7 +7,7 @@ class ColorsStyle {
   static final purple = getColorByHex('653796');
   static final purpleLight = getColorByHex('E0D7EA');
 
-  static final blue = getColorByHex('0962ea');
+  static final blue = getColorByHex('0961ea');
   static final blueLight = getColorByHex('CFEFFF');
 
   static final green = getColorByHex('029C60');
@@ -22,9 +22,10 @@ class ColorsStyle {
   static final red = getColorByHex('E30303');
   static final redLight = getColorByHex('FFDDDD');
 
-  static final gray = getColorByHex('666666');
+  static final gray = getColorByHex('9a9a9a');
   static final grayLight = getColorByHex('E6E6E6');
   static final grayLight2 = getColorByHex('AAAAAA');
+  static final grayLight3 = getColorByHex('F8F5F5');
   static final grayDark = getColorByHex('444444');
 
   static final background = getColorByHex('FFFDFA');

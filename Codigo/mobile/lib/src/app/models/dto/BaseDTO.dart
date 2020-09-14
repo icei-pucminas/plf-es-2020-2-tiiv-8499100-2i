@@ -1,8 +1,15 @@
-abstract class BaseDTO<T> {
-  String mensagem;
-  dynamic data;
+import 'package:json_annotation/json_annotation.dart';
 
-  void fromJson(Map json);
-  List<T> fromList(List<dynamic> list);
-  Map toJson();
+part 'BaseDTO.g.dart';
+
+@JsonSerializable()
+class BaseDTO {
+  String message;
+
+  BaseDTO({this.message});
+
+  factory BaseDTO.fromJson(Map<String, dynamic> json) =>
+      _$BaseDTOFromJson(json);
+
+  Map<String, dynamic> toJson() => _$BaseDTOToJson(this);
 }

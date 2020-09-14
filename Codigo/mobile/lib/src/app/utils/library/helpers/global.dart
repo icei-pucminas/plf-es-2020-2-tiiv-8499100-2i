@@ -1,7 +1,9 @@
 import 'package:get_it/get_it.dart';
-import 'package:inteligenciaindustrialapp/src/app/screens/employer_code/insert_employer_code_controller.dart';
-import 'package:inteligenciaindustrialapp/src/app/screens/pin/pin_controller.dart';
-import 'package:inteligenciaindustrialapp/src/app/screens/punch/punch_controller.dart';
+import 'package:inteligenciaindustrialapp/src/app/screens/auth/login_controller.dart';
+import 'package:inteligenciaindustrialapp/src/app/screens/auth/register_controller.dart';
+import 'package:inteligenciaindustrialapp/src/app/screens/home/home_controller.dart';
+import 'package:inteligenciaindustrialapp/src/app/screens/symbol/symbol_controller.dart';
+import 'package:inteligenciaindustrialapp/src/app/screens/video/video_controller.dart';
 import 'package:inteligenciaindustrialapp/src/app/shared/alert-dialog/alert_controller.dart';
 import 'package:inteligenciaindustrialapp/src/app/shared/alert-dialog/loading_hud.dart';
 import 'package:inteligenciaindustrialapp/src/app/shared/auth/authenticated_controller.dart';
@@ -23,6 +25,9 @@ final frwkAlert = GetIt.I<AlertController>();
 final frwkLoadHud = GetIt.I<LoadingHUD>();
 
 final frwkAuth = GetIt.I<AuthenticatedController>();
-final frwkEmployer = GetIt.I<InsertEmployerCodeController>();
-final frwkPin = GetIt.I<PinController>();
-final frwkPunch = GetIt.I<PunchController>();
+
+final homeController = GetIt.I<HomeController>();
+final symbolController = GetIt.I<SymbolController>();
+final videoController = GetIt.I<VideoController>();
+final registerController = GetIt.I<RegisterController>();
+final userController = GetIt.I<LoginController>();

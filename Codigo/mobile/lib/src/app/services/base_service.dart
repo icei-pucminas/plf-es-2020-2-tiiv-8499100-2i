@@ -5,6 +5,11 @@ import 'package:inteligenciaindustrialapp/src/app/utils/network/network_service.
 import 'package:shared_preferences/shared_preferences.dart';
 
 class BaseService {
+  Map<String, String> headers = {
+    'Authorization':
+        'Basic TmpkamNqWTBhSEpqTjJnNE1tNWtNak5xYTNNME4yTjFhMjpwbVpYSnVOM2RvTkdOeU5ETjRaV3QzYm1Ob2NtVnk='
+  };
+
   final _frwkNetwork = GetIt.I<NetworkService>();
 
   Future<dynamic> request(HttpMethod method, String endpoint,
