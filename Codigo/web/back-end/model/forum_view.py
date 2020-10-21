@@ -8,7 +8,7 @@ class ForumView(Base):
     id = Column(Integer, primary_key=True, unique=True, autoincrement=True)
     date = Column(DateTime, nullable=False)
     uid = Column(Integer, ForeignKey('user.uid'))
-    forum_id = Column(Integer, ForeignKey('forumor.id'))
+    forum_id = Column(Integer, ForeignKey('forum.id'))
 
     user = relationship('User')
     forum = relationship('Forum')
