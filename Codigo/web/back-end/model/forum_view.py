@@ -1,15 +1,20 @@
-from model.View import View
-from dao.genericDao import GenericDao
-from model.EnumClass import EnumClass
+from services.base import Base
+from sqlalchemy import Column, DateTime, Integer, ForeignKey
+from sqlalchemy.orm import relationship
 
-forum_view_dao = GenericDao()
+class ForumView(Base):
+    __tablename__ = 'forum_view'
 
+    id = Column(Integer, primary_key=True, unique=True, autoincrement=True)
+    date = Column(DateTime, nullable=False)
+    uid = Column(Integer, ForeignKey('user.uid'))
+    forum_id = Column(Integer, ForeignKey('forumor.id'))
 
-class ForumView(View):
+    user = relationship('User')
+    forum = relationship('Forum')
 
-    def __init__(self, date, user_id, forum_id):
-        super().__init__(date, user_id)
+    def __init__(self, date, uid, forum_id):
+        self.date = date
+        self.uid = uid
         self.forum_id = forum_id
 
-    def insert(self, forum_view):
-        forum_view_dao.insert(forum_view.__dict__, EnumClass.FORUM_VIEW.value)
