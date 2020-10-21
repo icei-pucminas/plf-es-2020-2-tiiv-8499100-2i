@@ -17,6 +17,7 @@ class EnumClass(Enum):
     SYMBOL_VIEW = "symbol_view"
     VIDEO_VIEW = "video_view"
     CALCULATOR_VIEW = "calculator_view"
+    FORUM_VIEW = "forum_view"
 
 
     @staticmethod
