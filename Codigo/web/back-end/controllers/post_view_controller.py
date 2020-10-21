@@ -1,6 +1,6 @@
 from datetime import date
-from flask import Blueprint, request, jsonify
-from model.PostView import PostView
+from flask import Blueprint, request, jsonify, Response
+from services import post_view_service
 
 post_view = Blueprint('post_view', __name__)
 
@@ -12,7 +12,6 @@ def insert():
     user_id = data["user_id"]
     post_id = data["post_id"]
 
-    post_view_model = PostView(current_date, user_id, post_id)
-    post_view_model.insert(post_view_model)
+    post_view_service.add_post_view(current_date, user_id, post_id)
 
-    return "View Contabilizada"
+    return Response(status=201)
