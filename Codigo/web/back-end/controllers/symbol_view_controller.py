@@ -1,6 +1,6 @@
 from datetime import date
-from flask import Blueprint, request, jsonify
-from model.SymbolView import SymbolView
+from flask import Blueprint, request, jsonify, Response
+from services import symbol_view_service
 
 symbol_view = Blueprint('symbol_view', __name__)
 
@@ -12,7 +12,6 @@ def insert():
     user_id = data["user_id"]
     symbol_id = data["symbol_id"]
 
-    symbol_view_model = SymbolView(current_date, user_id, symbol_id)
-    symbol_view_model.insert(symbol_view_model)
+    symbol_view_service.add_symbol_view(current_date, user_id, symbol_id)
 
-    return "View Contabilizada"
+    return Response(status=201)

@@ -1,6 +1,6 @@
 from datetime import date
-from flask import Blueprint, request, jsonify
-from model.VideoView import VideoView
+from flask import Blueprint, request, jsonify, Response
+from services import video_view_service
 
 video_view = Blueprint('video_view', __name__)
 
@@ -12,7 +12,6 @@ def insert():
     user_id = data["user_id"]
     video_id = data["video_id"]
 
-    video_view_model = VideoView(current_date, user_id, video_id)
-    video_view_model.insert(video_view_model)
+    video_view_service.add_video_view(current_date, user_id, video_id)
 
-    return "View Contabilizada"
+    return Response(status=201)

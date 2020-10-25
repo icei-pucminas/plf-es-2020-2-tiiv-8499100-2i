@@ -1,6 +1,6 @@
 from datetime import date
-from flask import Blueprint, request, jsonify
-from model.CalculatorView import CalculatorView
+from flask import Blueprint, request, jsonify, Response
+from services import calculator_view_service
 
 calculator_view = Blueprint('calculator_view', __name__)
 
@@ -12,7 +12,6 @@ def insert():
     user_id = data["user_id"]
     calculator_type = data["calculator_type"]
 
-    calculator_view_model = CalculatorView(current_date, user_id, calculator_type)
-    calculator_view_model.insert(calculator_view_model)
+    calculator_view_service.add_calculator_view(current_date, user_id, calculator_type)
 
-    return "View Contabilizada"
+    return Response(status=201)
