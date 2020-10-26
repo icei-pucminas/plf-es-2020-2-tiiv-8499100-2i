@@ -49,6 +49,7 @@ def get_forum(id):
                 ).__dict__
             )
 
+    forum.forum_posts = reversed(forum.forum_posts)
     forum = forum.__dict__
     return ForumDTO(forum['id'], forum['title'], forum_posts_json, original_post).__dict__
 
@@ -71,7 +72,8 @@ def add_post(body, date, is_original_post, uid, forum_id):
 
 def remove_post(id):
     s = start_session()
-    s.query(ForumPost.id == id).update({'body': 'Este post foi deletado.'})
+    s.query(ForumPost).filter(ForumPost.id == id).update({'body': 'Este post foi deletado.'})
+
     close_session(s)
 
 

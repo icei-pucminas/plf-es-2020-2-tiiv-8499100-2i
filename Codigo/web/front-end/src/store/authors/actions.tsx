@@ -1,5 +1,5 @@
+import { getAuthorsAPI } from "../../api/author";
 import { AuthorType } from "../../types/author";
-import { getAuthorsAPI } from "../../api/api";
 
 export enum AuthorsActionsEnum {
 	FETCH_AUTHORS_BEGIN = "FETCH_AUTHORS_BEGIN",

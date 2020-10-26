@@ -8,9 +8,9 @@ import Spacer from "../../../layout/spacer/Spacer";
 import Title from "../../../components/title/Title";
 import Spinner from "../../../components/spinner/Spinner";
 import NewButton from "../../../components/new-button/NewButton";
-import { deleteSymbolCategoryAPI } from "../../../api/api";
 import { SymbolCategoryType } from "../../../types/category";
 import CategoryCard from "../../../components/cards/category-card/CategoryCard";
+import { deleteSymbolCategoryAPI } from "../../../api/symbol_category";
 
 const ViewSymbolCategoryContainer = (props: RouteComponentProps) => {
 	const dispatchHook = useDispatch();

@@ -1,10 +1,10 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateAd, fetchAd, clearAd } from "../../../store/ad/actions";
-import { postAdAPI, putAdAPI } from "../../../api/api";
 import AdPage from "../../../pages/ad-page/AdPage";
 import { useParams, RouterProps } from "react-router";
 import Spinner from "../../../components/spinner/Spinner";
+import { postAdAPI, putAdAPI } from "../../../api/ad";
 
 const AdContainer = (props: RouterProps) => {
 	const dispatchHook = useDispatch();

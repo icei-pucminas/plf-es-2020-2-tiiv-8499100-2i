@@ -12,6 +12,17 @@ def insert(data):
     return id
 
 
+def insert_user(data):
+    session = start_session()
+    session.add(data)
+    session.commit()
+    session.refresh(data)
+    uid = data.uid
+
+    session.close()
+    return uid
+
+
 def get_all(type_class):
     session = start_session()
     data = session.query(type_class).all()

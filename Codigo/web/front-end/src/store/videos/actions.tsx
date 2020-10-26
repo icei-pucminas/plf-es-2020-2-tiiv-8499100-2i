@@ -1,5 +1,5 @@
+import { getVideosAPI } from "../../api/video";
 import { VideoType } from "../../types/video";
-import { getVideosAPI } from "../../api/api";
 
 export enum VideosActionsEnum {
 	FETCH_VIDEOS_BEGIN = "FETCH_VIDEOS_BEGIN",

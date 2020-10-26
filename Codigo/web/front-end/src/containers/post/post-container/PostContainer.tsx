@@ -3,11 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { updatePost, fetchPost, clearPost } from "../../../store/post/actions";
 import { fetchAuthors } from "../../../store/authors/actions";
-import { postPostAPI, putPostAPI } from "../../../api/api";
 
 import PostPage from "../../../pages/post-page/PostPage";
 import { RouterProps, useParams } from "react-router";
 import Spinner from "../../../components/spinner/Spinner";
+import { postPostAPI, putPostAPI } from "../../../api/post";
 
 const PostContainer = (props: RouterProps) => {
 	const dispatchHook = useDispatch();

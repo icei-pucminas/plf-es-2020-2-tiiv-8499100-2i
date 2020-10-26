@@ -1,6 +1,6 @@
 from dto.user_dto import UserDTO
 from model.user import User
-from dao.dao_mysql import insert, get_all, get, update, delete
+from dao.dao_mysql import insert_user, get_all, get, update, delete
 from utils.validate_params import validate_text_param
 
 
@@ -8,7 +8,7 @@ def add_user(email, password, name, document, phone, business_name):
     validate_params(name)
     user = User(None, name, document, phone, business_name, False)
     user.create_firebase_user(email, password)
-    insert(user)
+    insert_user(user)
 
 
 def get_all_users():

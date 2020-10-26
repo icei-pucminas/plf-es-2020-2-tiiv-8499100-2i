@@ -1,7 +1,6 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { postSymbolAPI, putSymbolAPI } from "../../../api/api";
 import {
 	updateSymbol,
 	fetchSymbol,
@@ -12,6 +11,7 @@ import SymbolPage from "../../../pages/symbol-page/SymbolPage";
 import { fetchSymbolSubcategories } from "../../../store/symbolSubcategories/actions";
 import { RouterProps, useParams } from "react-router";
 import Spinner from "../../../components/spinner/Spinner";
+import { postSymbolAPI, putSymbolAPI } from "../../../api/symbol";
 
 const SymbolContainer = (props: RouterProps) => {
 	const dispatchHook = useDispatch();

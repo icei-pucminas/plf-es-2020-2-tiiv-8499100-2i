@@ -1,5 +1,5 @@
+import { getSymbolAPI } from "../../api/symbol";
 import { SymbolType } from "../../types/symbol";
-import { getSymbolAPI } from "../../api/api";
 
 export enum SymbolActionsEnum {
 	FETCH_SYMBOL_BEGIN = "FETCH_SYMBOL_BEGIN",

@@ -6,9 +6,12 @@ import {
 	clearVideoCategory,
 } from "../../../store/videoCategory/actions";
 import VideoCategoryPage from "../../../pages/video-category-page/VideoCategoryPage";
-import { postVideoCategoryAPI, putVideoCategoryAPI } from "../../../api/api";
 import { RouterProps, useParams } from "react-router";
 import Spinner from "../../../components/spinner/Spinner";
+import {
+	postVideoCategoryAPI,
+	putVideoCategoryAPI,
+} from "../../../api/video_category";
 
 const VideoCategoryContainer = (props: RouterProps) => {
 	const dispatchHook = useDispatch();

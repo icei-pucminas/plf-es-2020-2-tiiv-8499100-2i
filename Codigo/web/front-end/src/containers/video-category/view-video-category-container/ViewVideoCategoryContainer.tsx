@@ -7,9 +7,9 @@ import Title from "../../../components/title/Title";
 import Spinner from "../../../components/spinner/Spinner";
 import NewButton from "../../../components/new-button/NewButton";
 import { fetchVideoCategories } from "../../../store/videoCategories/actions";
-import { deleteVideoCategoryAPI } from "../../../api/api";
 import { VideoCategoryType } from "../../../types/category";
 import CategoryCard from "../../../components/cards/category-card/CategoryCard";
+import { deleteVideoCategoryAPI } from "../../../api/video_category";
 
 const ViewVideoCategoryContainer = (props: RouteComponentProps) => {
 	const dispatchHook = useDispatch();

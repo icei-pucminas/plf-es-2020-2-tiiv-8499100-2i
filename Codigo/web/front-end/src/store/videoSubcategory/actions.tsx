@@ -1,4 +1,4 @@
-import { getVideoSubcategoryAPI } from "../../api/api";
+import { getVideoSubcategoryAPI } from "../../api/video_subcategory";
 import { VideoSubcategoryType } from "../../types/category";
 
 export enum VideoSubcategoryActionsEnum {

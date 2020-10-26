@@ -1,4 +1,4 @@
-import { getSymbolSubcategoryAPI } from "../../api/api";
+import { getSymbolSubcategoryAPI } from "../../api/symbol_subcategory";
 import { SymbolSubcategoryType } from "../../types/category";
 
 export enum SymbolSubcategoryActionsEnum {

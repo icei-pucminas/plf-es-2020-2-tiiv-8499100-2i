@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router";
 
 import { fetchPosts } from "../../../store/posts/actions";
-import { deleteSymbolAPI } from "../../../api/api";
 
 import Title from "../../../components/title/Title";
 import Spacer from "../../../layout/spacer/Spacer";
@@ -14,6 +13,7 @@ import { fetchSymbols } from "../../../store/symbols/actions";
 
 import * as classes from "./ViewSymbolContainer.module.css";
 import NewButton from "../../../components/new-button/NewButton";
+import { deleteSymbolAPI } from "../../../api/symbol";
 
 const ViewSymbolContainer = (props: RouteComponentProps) => {
 	const dispatchHook = useDispatch();

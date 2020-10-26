@@ -5,11 +5,11 @@ import {
 	fetchVideo,
 	clearVideo,
 } from "../../../store/video/actions";
-import { postVideoAPI, putVideoAPI } from "../../../api/api";
 import VideoPage from "../../../pages/video-page/VideoPage";
 import { fetchVideoSubcategories } from "../../../store/videoSubcategories/actions";
 import { RouterProps, useParams } from "react-router";
 import Spinner from "../../../components/spinner/Spinner";
+import { postVideoAPI, putVideoAPI } from "../../../api/video";
 
 const VideoContainer = (props: RouterProps) => {
 	const dispatchHook = useDispatch();

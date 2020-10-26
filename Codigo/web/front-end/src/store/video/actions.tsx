@@ -1,4 +1,4 @@
-import { getVideoAPI } from "../../api/api";
+import { getVideoAPI } from "../../api/video";
 import { VideoType } from "../../types/video";
 
 export enum VideoActionsEnum {

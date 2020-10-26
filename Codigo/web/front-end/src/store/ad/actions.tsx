@@ -1,5 +1,5 @@
+import { getAdAPI } from "../../api/ad";
 import { AdType } from "../../types/ad";
-import { getAdAPI } from "../../api/api";
 
 export enum AdActionsEnum {
 	FETCH_AD_BEGIN = "FETCH_AD_BEGIN",

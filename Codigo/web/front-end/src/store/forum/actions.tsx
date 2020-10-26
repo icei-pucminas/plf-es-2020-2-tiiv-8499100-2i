@@ -1,4 +1,4 @@
-import { getForumAPI, getForumsAPI } from "../../api/api";
+import { getForumAPI, getForumsAPI } from "../../api/forum";
 
 export enum ForumActionsEnum {
 	FETCH_FORUM_BEGIN = "FETCH_FORUM_BEGIN",

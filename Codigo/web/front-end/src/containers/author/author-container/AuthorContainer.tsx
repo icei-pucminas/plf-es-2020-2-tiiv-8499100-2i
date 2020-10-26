@@ -5,10 +5,10 @@ import {
 	fetchAuthor,
 	clearAuthor,
 } from "../../../store/author/actions";
-import { postAuthorAPI, putAuthorAPI } from "../../../api/api";
 import { useParams, RouterProps } from "react-router";
 import Spinner from "../../../components/spinner/Spinner";
 import AuthorPage from "../../../pages/author-page/AuthorPage";
+import { postAuthorAPI, putAuthorAPI } from "../../../api/author";
 
 const AuthorContainer = (props: RouterProps) => {
 	const dispatchHook = useDispatch();

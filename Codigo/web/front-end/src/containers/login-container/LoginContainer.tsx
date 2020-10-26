@@ -1,8 +1,8 @@
 import React from "react";
 import { RouteComponentProps } from "react-router";
+import { authenticate } from "../../api/auth";
 
 import LoginPage from "../../pages/login-page/LoginPage";
-import { authenticate } from "../../api/api";
 import { saveUser } from "../../utils/session";
 
 export const LoginContainer = (props: RouteComponentProps) => {

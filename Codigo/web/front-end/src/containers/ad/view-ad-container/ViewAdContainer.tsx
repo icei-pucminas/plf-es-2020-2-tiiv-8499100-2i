@@ -7,9 +7,9 @@ import Title from "../../../components/title/Title";
 import Spinner from "../../../components/spinner/Spinner";
 import NewButton from "../../../components/new-button/NewButton";
 import { fetchAds } from "../../../store/ads/actions";
-import { deleteAdAPI } from "../../../api/api";
 import { AdType } from "../../../types/ad";
 import AdCard from "../../../components/cards/ad-card/AdCard";
+import { deleteAdAPI } from "../../../api/ad";
 
 const ViewAdContainer = (props: RouteComponentProps) => {
 	const dispatchHook = useDispatch();

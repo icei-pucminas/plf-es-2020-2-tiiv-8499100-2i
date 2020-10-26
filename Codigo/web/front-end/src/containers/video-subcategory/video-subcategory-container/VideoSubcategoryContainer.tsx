@@ -2,10 +2,6 @@ import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import VideoSubcategoryPage from "../../../pages/video-subcategory-page/VideoSubcategoryPage";
 import {
-	postVideoSubcategoryAPI,
-	putVideoSubcategoryAPI,
-} from "../../../api/api";
-import {
 	updateVideoSubcategory,
 	fetchVideoSubcategory,
 	clearVideoSubcategory,
@@ -13,6 +9,10 @@ import {
 import { fetchVideoCategories } from "../../../store/videoCategories/actions";
 import { RouterProps, useParams } from "react-router";
 import Spinner from "../../../components/spinner/Spinner";
+import {
+	postVideoSubcategoryAPI,
+	putVideoSubcategoryAPI,
+} from "../../../api/video_subcategory";
 
 const VideoSubcategoryContainer = (props: RouterProps) => {
 	const dispatchHook = useDispatch();

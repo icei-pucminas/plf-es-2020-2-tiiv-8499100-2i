@@ -1,5 +1,5 @@
+import { getSymbolSubcategoriesAPI } from "../../api/symbol_subcategory";
 import { SymbolSubcategoryType } from "../../types/category";
-import { getSymbolSubcategoriesAPI } from "../../api/api";
 
 export enum SymbolSubcategoriesActionsEnum {
 	FETCH_SYMBOL_SUBCATEGORIES_BEGIN = "FETCH_SYMBOL_SUBCATEGORIES_BEGIN",

@@ -19,8 +19,7 @@ def insert():
         user_service.add_user(email, password, name, document, phone, business_name)
         res = jsonify({"message": "Ok"})
     except Exception as error:
-        print(error)
-        if "EMAIL_EXISTS" in error.args[1]:
+        if error.args != None and "EMAIL_EXISTS" in error.args[1]:
             res = jsonify({"message": "Já existe um usuário com este e-mail"})
 
     return res

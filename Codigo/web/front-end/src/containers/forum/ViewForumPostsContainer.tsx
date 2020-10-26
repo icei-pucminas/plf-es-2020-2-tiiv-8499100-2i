@@ -6,8 +6,8 @@ import ForumPostCard from "../../components/cards/forum-post-card/ForumPostCard"
 import { useDispatch, useSelector } from "react-redux";
 import { RouterProps, useParams } from "react-router";
 import { fetchForum } from "../../store/forum/actions";
-import { deleteForumAPI, deleteForumPostAPI, getForumAPI } from "../../api/api";
 import DeleteButton from "../../components/delete-button/DeleteButton";
+import { deleteForumAPI, deleteForumPostAPI } from "../../api/forum";
 
 const ViewForumPostsContainer = (props: RouterProps) => {
 	const dispatchHook = useDispatch();

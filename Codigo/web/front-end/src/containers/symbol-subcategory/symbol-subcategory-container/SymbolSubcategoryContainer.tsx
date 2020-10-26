@@ -2,10 +2,6 @@ import React, { ChangeEvent, FormEvent, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import SymbolSubcategoryPage from "../../../pages/symbol-subcategory-page/SymbolSubcategoryPage";
 import {
-	postSymbolSubcategoryAPI,
-	putSymbolSubcategoryAPI,
-} from "../../../api/api";
-import {
 	updateSymbolSubcategory,
 	fetchSymbolSubcategory,
 	clearSymbolSubcategory,
@@ -13,6 +9,10 @@ import {
 import { RouterProps, useParams } from "react-router";
 import Spinner from "../../../components/spinner/Spinner";
 import { fetchSymbolCategories } from "../../../store/symbolCategories/actions";
+import {
+	postSymbolSubcategoryAPI,
+	putSymbolSubcategoryAPI,
+} from "../../../api/symbol_subcategory";
 
 const SymbolSubcategoryContainer = (props: RouterProps) => {
 	const dispatchHook = useDispatch();

@@ -1,5 +1,5 @@
+import { getPostAPI } from "../../api/post";
 import { PostType } from "../../types/post";
-import { getPostAPI } from "../../api/api";
 
 export enum PostActionsEnum {
 	FETCH_POST_BEGIN = "FETCH_POST_BEGIN",

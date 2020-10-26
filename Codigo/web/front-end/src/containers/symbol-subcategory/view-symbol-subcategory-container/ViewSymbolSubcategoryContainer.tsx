@@ -9,7 +9,7 @@ import NewButton from "../../../components/new-button/NewButton";
 import { fetchSymbolSubcategories } from "../../../store/symbolSubcategories/actions";
 import CategoryCard from "../../../components/cards/category-card/CategoryCard";
 import { SymbolSubcategoryType } from "../../../types/category";
-import { deleteSymbolSubcategoryAPI } from "../../../api/api";
+import { deleteSymbolSubcategoryAPI } from "../../../api/symbol_subcategory";
 
 const ViewSymbolSubcategoryContainer = (props: RouteComponentProps) => {
 	const dispatchHook = useDispatch();

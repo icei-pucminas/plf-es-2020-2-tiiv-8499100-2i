@@ -5,10 +5,13 @@ import {
 	fetchSymbolCategory,
 	clearSymbolCategory,
 } from "../../../store/symbolCategory/actions";
-import { postSymbolCategoryAPI, putSymbolCategoryAPI } from "../../../api/api";
 import SymbolCategoryPage from "../../../pages/symbol-category-page/SymbolCategoryPage";
 import { RouterProps, useParams } from "react-router";
 import Spinner from "../../../components/spinner/Spinner";
+import {
+	postSymbolCategoryAPI,
+	putSymbolCategoryAPI,
+} from "../../../api/symbol_category";
 
 const SymbolCategoryContainer = (props: RouterProps) => {
 	const dispatchHook = useDispatch();

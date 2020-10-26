@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from "react";
 import { useDispatch } from "react-redux";
 import { RouteComponentProps } from "react-router";
@@ -6,7 +5,6 @@ import { useSelector } from "react-redux";
 
 import { VideoType } from "../../../types/video";
 import { fetchVideos } from "../../../store/videos/actions";
-import { deleteVideoAPI } from "../../../api/api";
 import VideoCard from "../../../components/cards/video-card/VideoCard";
 import Title from "../../../components/title/Title";
 import Spacer from "../../../layout/spacer/Spacer";
@@ -15,6 +13,7 @@ import Spinner from "../../../components/spinner/Spinner";
 import * as classes from "./ViewVideoContainer.module.css";
 import NewButton from "../../../components/new-button/NewButton";
 import { useEffect } from "react";
+import { deleteVideoAPI } from "../../../api/video";
 
 const ViewVideoContainer = (props: RouteComponentProps) => {
 	const dispatchHook = useDispatch();
@@ -24,11 +23,11 @@ const ViewVideoContainer = (props: RouteComponentProps) => {
 		dispatchHook(fetchVideos());
 	};
 
-	const editVideoHandler = (videoId: string) => {
+	const editVideoHandler = (videoId: number) => {
 		props.history.push("/video/editar/" + videoId);
 	};
 
-	const deleteVideoHandler = async (videoId: string) => {
+	const deleteVideoHandler = async (videoId: number) => {
 		await deleteVideoAPI(videoId);
 		getVideosHandler();
 	};
@@ -42,7 +41,7 @@ const ViewVideoContainer = (props: RouteComponentProps) => {
 	}, [dispatchHook]);
 
 	const videosEls = videos?.map((video: VideoType) => (
-		<div key={video.video_id}>
+		<div key={video.id}>
 			<VideoCard
 				video={video}
 				editVideo={editVideoHandler}

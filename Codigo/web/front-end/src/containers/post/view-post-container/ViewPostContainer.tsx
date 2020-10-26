@@ -4,7 +4,6 @@ import { RouteComponentProps } from "react-router";
 
 import { PostType } from "../../../types/post";
 import { fetchPosts } from "../../../store/posts/actions";
-import { deletePostAPI } from "../../../api/api";
 
 import PostCard from "../../../components/cards/post-card/PostCard";
 import Title from "../../../components/title/Title";
@@ -13,6 +12,7 @@ import Spinner from "../../../components/spinner/Spinner";
 
 import * as classes from "./ViewPostContainer.module.css";
 import NewButton from "../../../components/new-button/NewButton";
+import { deletePostAPI } from "../../../api/post";
 
 const ViewPostContainer = (props: RouteComponentProps) => {
 	const dispatchHook = useDispatch();

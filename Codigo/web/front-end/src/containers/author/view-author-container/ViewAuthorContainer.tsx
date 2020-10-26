@@ -9,8 +9,8 @@ import Spacer from "../../../layout/spacer/Spacer";
 import Title from "../../../components/title/Title";
 import Spinner from "../../../components/spinner/Spinner";
 import AuthorCard from "../../../components/cards/author-card/AuthorCard";
-import { deleteAuthorAPI } from "../../../api/api";
 import NewButton from "../../../components/new-button/NewButton";
+import { deleteAuthorAPI } from "../../../api/author";
 
 const ViewAuthorContainer = (props: RouteComponentProps) => {
 	const dispatchHook = useDispatch();
