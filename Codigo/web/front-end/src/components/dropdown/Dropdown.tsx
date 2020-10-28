@@ -2,7 +2,7 @@ import React from "react";
 
 import * as classes from "./Dropdown.module.css";
 
-type OptionType = { label: string; value: number };
+type OptionType = { label: string; value: string | number };
 
 type PropsType = {
 	label: string;

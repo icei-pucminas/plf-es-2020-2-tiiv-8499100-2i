@@ -78,9 +78,21 @@ const PostPage = (props: PropsType) => (
 			</Row>
 			<Spacer vertical={20} />
 			<Row>
+				<TextField
+					label="Data de publicação"
+					inputAttrs={{
+						id: "publish_date",
+						type: "date",
+						onChange: props.onChangeInput,
+						value: props.post.publish_date,
+					}}
+				/>
+			</Row>
+			<Spacer vertical={20} />
+			<Row>
 				<Toggle
 					label="Requer usuário cadastrado?"
-					value={props.post.requiresLogin}
+					value={props.post.requires_login}
 					onChange={props.onChangeInput}
 					inputAttrs={{
 						id: "requires_login",

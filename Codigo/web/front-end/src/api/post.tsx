@@ -6,12 +6,10 @@ export const getPostAPI = (postId: number): Promise<PostType> => {
 };
 
 export const getPostsAPI = (): Promise<PostType[]> => {
-	return getReq("post");
+	return getReq("post?noads=true");
 };
 
 export const postPostAPI = (data: PostType) => {
-	console.log(data);
-	debugger;
 	return postReq("post", data);
 };
 

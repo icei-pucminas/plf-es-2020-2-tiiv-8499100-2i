@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_cors import CORS
 
 from controllers.ad_controller import ad
@@ -45,7 +45,7 @@ CORS(app)
 
 @app.route("/")
 def hello():
-    return "Hello World!"
+    return render_template("index.html")
 
 
 if __name__ == "__main__":

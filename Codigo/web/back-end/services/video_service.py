@@ -13,7 +13,12 @@ def add_video(title, youtube_url, date, subcategory_id):
 
 def get_all_videos():
     videos = get_all(Video)
-    return format_json(videos)
+    return format_json(videos, True)
+
+
+def get_all_videos_without_ads():
+    videos = get_all(Video)
+    return format_json(videos, False)
 
 
 def get_video(id):
@@ -31,18 +36,19 @@ def delete_video(id):
     delete(Video, id)
 
 
-def format_json(videos):
+def format_json(videos, ads_shown):
     videos_json = []
 
     for video in videos:
         video = video.__dict__
         videos_json.append(VideoDTO(video['id'], video['title'], video['date'].isoformat(), video['youtube_url'], video['subcategory_id']).__dict__)
 
-    ads = get_all_ads()
-    ads_number = math.floor(len(videos) / 3)
-    i = len(videos) - 1
-    for _ in reversed(videos_json):
-        if i != 0 and i % ads_number == 0 and len(ads) > 0:
-            videos_json.insert(i, random.choice(ads))
-        i = i - 1
+    if ads_shown:
+        ads = get_all_ads()
+        ads_number = math.floor(len(videos) / 3)
+        i = len(videos) - 1
+        for _ in reversed(videos_json):
+            if i != 0 and i % ads_number == 0 and len(ads) > 0:
+                videos_json.insert(i, random.choice(ads))
+            i = i - 1
     return videos_json

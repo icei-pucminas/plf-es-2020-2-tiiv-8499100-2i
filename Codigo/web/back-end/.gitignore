@@ -11,3 +11,4 @@ venv
 script
 /**/*.pyc
 __pycache__
+templates

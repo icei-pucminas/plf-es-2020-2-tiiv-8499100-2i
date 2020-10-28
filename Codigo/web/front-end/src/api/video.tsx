@@ -6,7 +6,7 @@ export const getVideoAPI = (videoId: number): Promise<VideoType> => {
 };
 
 export const getVideosAPI = (): Promise<VideoType[]> => {
-	return getReq("video");
+	return getReq("video?noads=true");
 };
 
 export const postVideoAPI = (data: VideoType) => {

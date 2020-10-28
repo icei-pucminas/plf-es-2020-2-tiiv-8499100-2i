@@ -4,6 +4,8 @@ type StateType = {
 	post: any;
 };
 
+const currentDate = new Date().toISOString().split("T")[0];
+
 const initialState: StateType = {
 	post: {
 		title: "",
@@ -11,6 +13,7 @@ const initialState: StateType = {
 		img: "",
 		author_id: "",
 		requires_login: false,
+		publish_date: currentDate,
 	},
 };
 

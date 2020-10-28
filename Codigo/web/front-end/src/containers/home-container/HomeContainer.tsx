@@ -11,6 +11,12 @@ const HomeContainer = (props: RouteComponentProps) => {
 	const redirectToGeneralStats = () => {
 		props.history.push("/estatisticas-gerais");
 	};
+	const redirectToSpecificStats = () => {
+		props.history.push("/estatisticas-especificas");
+	};
+	const redirectToUserStats = () => {
+		props.history.push("/estatisticas-usuario");
+	};
 	const redirectToPosts = () => {
 		props.history.push("/post");
 	};
@@ -49,6 +55,12 @@ const HomeContainer = (props: RouteComponentProps) => {
 			<Grid>
 				<Card onClick={redirectToGeneralStats}>
 					<strong>Gerais</strong>
+				</Card>
+				<Card onClick={redirectToSpecificStats}>
+					<strong>Especificas</strong>
+				</Card>
+				<Card onClick={redirectToUserStats}>
+					<strong>Por Usuário</strong>
 				</Card>
 			</Grid>
 			<Spacer vertical={40} />

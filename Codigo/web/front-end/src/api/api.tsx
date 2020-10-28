@@ -6,7 +6,9 @@ const authKey =
 
 const devEnv = window.location.hostname === "localhost";
 
-const baseURL = devEnv ? "http://localhost:5000" : window.location.origin;
+export const baseURL = devEnv
+	? "http://localhost:5000"
+	: window.location.origin;
 
 export const getReq = async (endpoint: string) => {
 	try {

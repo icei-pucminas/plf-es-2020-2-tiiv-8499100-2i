@@ -29,8 +29,11 @@ def add_post(title, body, publish_date, img, requires_login, author_id):
 
 def get_all_posts():
     posts = get_all(Post)
-    return format_json(posts)
+    return format_json(posts, True)
 
+def get_all_posts_without_ads():
+    posts = get_all(Post)
+    return format_json(posts, False)
 
 def get_post(id):
     post = get(Post, id)
@@ -57,12 +60,14 @@ def delete_post(id):
     delete(Post, id)
 
 
-def format_json(posts):
+def format_json(posts, ads_shown):
     posts_json = []
 
     for post in posts:
         author = AuthorDTO(post.author.id, post.author.name, post.author.biography).__dict__
         post = post.__dict__
+        if ads_shown and post['publish_date'] > datetime.now().date():
+            continue
 
         posts_json.append(
             PostDTO(
@@ -76,13 +81,14 @@ def format_json(posts):
             ).__dict__
         )
 
-    ads = get_all_ads()
-    ads_number = math.floor(len(posts) / 3)
-    i = len(posts) - 1
-    for _ in reversed(posts_json):
-        if i != 0 and i % ads_number == 0 and len(ads) > 0:
-            posts_json.insert(i, random.choice(ads))
-        i = i - 1
+    if ads_shown:
+        ads = get_all_ads()
+        ads_number = math.floor(len(posts) / 3)
+        i = len(posts) - 1
+        for _ in reversed(posts_json):
+            if i != 0 and i % ads_number == 0 and len(ads) > 0:
+                posts_json.insert(i, random.choice(ads))
+            i = i - 1
 
     return posts_json
 

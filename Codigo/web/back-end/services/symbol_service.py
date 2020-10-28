@@ -42,13 +42,6 @@ def format_json(symbols):
         symbols_json.append(
             SymbolDTO(symbol['id'], symbol['title'], symbol['body'], symbol['img'], symbol['subcategory_id']).__dict__)
 
-    ads = get_all_ads()
-    ads_number = math.floor(len(symbols) / 3)
-    i = len(symbols) - 1
-    for _ in reversed(symbols_json):
-        if i != 0 and i % ads_number == 0 and len(ads) > 0:
-            symbols_json.insert(i, random.choice(ads))
-        i = i - 1
     return symbols_json
 
 

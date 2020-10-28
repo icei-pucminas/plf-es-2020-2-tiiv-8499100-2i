@@ -4,3 +4,17 @@
 	background-color: #fff;
 	box-shadow: 0 6px 8px rgba(0, 0, 0, 0.16);
 }
+.card-title {
+	font-size: 18px;
+	font-weight: bold;
+}
+.card-subtitle {
+	font-size: 14px;
+	font-weight: bold;
+	color: #9A9A9A;
+}
+.card-info {
+	font-size: 40px;
+	font-weight: bold;
+	color: #9A9A9A;
+}

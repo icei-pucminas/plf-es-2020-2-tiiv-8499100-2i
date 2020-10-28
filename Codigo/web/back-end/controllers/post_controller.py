@@ -21,7 +21,11 @@ def insert():
 
 @post.route("/post", methods=['GET'])
 def get_all():
-    response = post_service.get_all_posts()
+    if request.args.get("noads") != None:
+        response = post_service.get_all_posts_without_ads()
+    else:
+        response = post_service.get_all_posts()
+
     return jsonify(response)
 
 

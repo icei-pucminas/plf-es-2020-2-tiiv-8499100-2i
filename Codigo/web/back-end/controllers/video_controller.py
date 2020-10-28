@@ -18,7 +18,11 @@ def insert():
 
 @video.route("/video", methods=['GET'])
 def get_all():
-    response = video_service.get_all_videos()
+    if request.args.get("noads") != None:
+        response = video_service.get_all_videos_without_ads()
+    else:
+        response = video_service.get_all_videos()
+
     return jsonify(response)
 
 
