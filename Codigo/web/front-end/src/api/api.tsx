@@ -8,7 +8,7 @@ const devEnv = window.location.hostname === "localhost";
 
 export const baseURL = devEnv
 	? "http://localhost:5000"
-	: window.location.origin;
+	: "https://inteligencia-industrial-2i.herokuapp.com";
 
 export const getReq = async (endpoint: string) => {
 	try {
