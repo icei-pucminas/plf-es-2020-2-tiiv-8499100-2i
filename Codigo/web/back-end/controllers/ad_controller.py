@@ -31,7 +31,10 @@ def get(id):
 def update(id):
     text = request.form['text']
     url = request.form['url']
-    img = request.form['img']
+    if len(request.files) > 0:
+        img = request.files.get('img')
+    else:
+        img = None
 
     ad_service.update_ad(id, text, img, url)
 

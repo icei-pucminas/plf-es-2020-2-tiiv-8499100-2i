@@ -39,7 +39,10 @@ def get(id):
 def update(id):
     title = request.form['title']
     body = request.form['body']
-    img = request.files.get('img')
+    if len(request.files) > 0:
+        img = request.files.get('img')
+    else:
+        img = None
     publish_date = request.form['publish_date']
     author_id = request.form['author_id']
     requires_login = request.form['requires_login']

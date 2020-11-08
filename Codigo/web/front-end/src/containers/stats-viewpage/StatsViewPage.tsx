@@ -103,7 +103,13 @@ const generateChartValues = (
 		const labelIndex = labels.findIndex(
 			(value) => value === view.date.split("T")[0]
 		);
-		if (labelIndex && idLabel !== "calculator" && view[idLabel] === id) {
+
+		if (idLabel === "calculator") {
+			values[labelIndex]++;
+			return;
+		}
+
+		if (labelIndex && view[idLabel] === id) {
 			values[labelIndex]++;
 		}
 	});
@@ -213,7 +219,7 @@ const StatsViewPage = () => {
 
 	return (
 		<div>
-			<Title>Estatísticas de Uso</Title>
+			<Title>Estatísticas Específicas</Title>
 			<Spacer vertical={30} />
 			<Row>
 				<TextField

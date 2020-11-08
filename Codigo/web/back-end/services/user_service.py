@@ -1,6 +1,6 @@
 from dto.user_dto import UserDTO
 from model.user import User
-from dao.dao_mysql import insert_user, get_all, get, update, delete
+from dao.dao_mysql import insert_user, get_all, get, start_session, close_session, delete
 from utils.validate_params import validate_text_param
 
 
@@ -23,8 +23,16 @@ def get_user(uid):
 
 
 def update_user(uid, name, document, phone, business_name):
-    user = User(uid, name, document, phone, business_name, False)
-    update(User, uid, user)
+    s = start_session()
+
+    s.query(User).filter(User.uid == uid).update({
+        'name': name,
+        'document': document,
+        'phone': phone,
+        'business_name': business_name
+    })
+
+    close_session(s)
 
 
 def delete_user(uid):

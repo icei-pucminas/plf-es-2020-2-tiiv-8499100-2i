@@ -1,6 +1,6 @@
 from dto.symbol_subcategory_dto import SymbolSubcategoryDTO
 from model.symbol_subcategory import SymbolSubcategory
-from dao.dao_mysql import insert, get_all, get, update, delete
+from dao.dao_mysql import insert, get_all, get, start_session, close_session, delete
 
 
 def add_symbol_subcategory(name, category_id):
@@ -20,8 +20,14 @@ def get_symbol_subcategory(id):
 
 
 def update_symbol_subcategory(id, name, category_id):
-    symbol_subcategory = SymbolSubcategory(name, category_id)
-    update(SymbolSubcategory, id, symbol_subcategory)
+    s = start_session()
+
+    s.query(SymbolSubcategory).filter(SymbolSubcategory.id == id).update({
+        'name': name,
+        'category_id': category_id
+    })
+
+    close_session(s)
 
 
 def delete_symbol_subcategory(id):

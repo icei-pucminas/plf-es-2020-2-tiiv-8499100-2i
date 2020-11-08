@@ -42,11 +42,11 @@ def get_all_filter():
     return jsonify(response)
 
 
-def __filter_start_date(data, start_date):
+def __filter_start_date(data, str_start_date):
     filtered_list = []
 
     for d in data:
-        start_date = datetime.fromisoformat(start_date)
+        start_date = datetime.fromisoformat(str_start_date)
         view_date = datetime.fromisoformat(d['date'])
 
         if view_date >= start_date:
@@ -55,11 +55,11 @@ def __filter_start_date(data, start_date):
     return filtered_list
 
 
-def __filter_end_date(data, end_date):
+def __filter_end_date(data, str_end_date):
     filtered_list = []
 
     for d in data:
-        end_date = datetime.fromisoformat(end_date)
+        end_date = datetime.fromisoformat(str_end_date)
         view_date = datetime.fromisoformat(d['date'])
 
         if view_date <= end_date:

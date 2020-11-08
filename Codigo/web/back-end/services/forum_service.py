@@ -49,15 +49,9 @@ def get_forum(id):
                 ).__dict__
             )
 
-    forum.forum_posts = reversed(forum.forum_posts)
+    forum.forum_posts = list(reversed(forum.forum_posts))
     forum = forum.__dict__
     return ForumDTO(forum['id'], forum['title'], forum_posts_json, original_post).__dict__
-
-
-def update_forum(id, title):
-    validate_text_param(title)
-    forum = Forum(title)
-    update(Forum, id, forum)
 
 
 def delete_forum(id):

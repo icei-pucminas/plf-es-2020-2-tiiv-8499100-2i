@@ -5,7 +5,9 @@ class UserDTO:
 		self.document = document
 		self.phone = phone
 		self.businessName = businessName
+		self.business_name = businessName
 		self.isAdmin = isAdmin
+		self.is_admin = isAdmin
 
 	def get_uid(self):
 		return self.uid

@@ -1,6 +1,6 @@
 from dto.video_subcategory_dto import VideoSubcategoryDTO
 from model.video_subcategory import VideoSubcategory
-from dao.dao_mysql import insert, get_all, get, update, delete
+from dao.dao_mysql import insert, get_all, get, start_session, close_session, delete
 
 
 def add_video_subcategory(name, category_id):
@@ -20,8 +20,14 @@ def get_video_subcategory(id):
 
 
 def update_video_subcategory(id, name, category_id):
-    video_subcategory = VideoSubcategory(name, category_id)
-    update(VideoSubcategory, id, video_subcategory)
+    s = start_session()
+
+    s.query(VideoSubcategory).filter(VideoSubcategory.id == id).update({
+        'name': name,
+        'category_id': category_id
+    })
+
+    close_session(s)
 
 
 def delete_video_subcategory(id):

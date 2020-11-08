@@ -2,7 +2,7 @@ class VideoSubcategoryDTO:
 	def __init__(self, id, name, category):
 		self.id = id
 		self.name = name
-		self.category = category
+		self.category_id = category
 
 	def get_id(self):
 		return self.id

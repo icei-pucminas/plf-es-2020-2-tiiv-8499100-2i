@@ -1,6 +1,6 @@
 from dto.symbol_dto import SymbolDTO
 from model.symbol import Symbol
-from dao.dao_mysql import insert, get_all, get, update, delete
+from dao.dao_mysql import insert, get_all, get, start_session, close_session, delete
 from utils.validate_params import validate_text_param
 from credentials import storage
 from services.ad_service import get_all_ads
@@ -26,8 +26,21 @@ def get_symbol(id):
 
 
 def update_symbol(id, title, body, img, subcategory_id):
-    symbol = Symbol(title, body, img, subcategory_id)
-    update(Symbol, id, symbol)
+    s = start_session()
+    if img == None:
+        symbol = get_symbol(id)
+        img_path = symbol['img']
+    else:
+        img_path = storage.upload_image_file(img, "symbol")
+
+    s.query(Symbol).filter(Symbol.id == id).update({
+        'title': title,
+        'body': body,
+        'img': img_path,
+        'subcategory_id': subcategory_id
+    })
+
+    close_session(s)
 
 
 def delete_symbol(id):

@@ -1,6 +1,6 @@
 from dto.author_dto import AuthorDTO
 from model.author import Author
-from dao.dao_mysql import insert, get_all, get, update, delete
+from dao.dao_mysql import insert, get_all, get, start_session, close_session, delete
 from utils.validate_params import validate_text_param
 
 
@@ -22,9 +22,14 @@ def get_author(id):
 
 
 def update_author(id, name, biography):
-    validate_params(name, biography)
-    author = Author(name, biography)
-    update(Author, id, author)
+    s = start_session()
+
+    s.query(Author).filter(Author.id == id).update({
+        'name': name,
+        'biography': biography
+    })
+
+    close_session(s)
 
 
 def delete_author(id):

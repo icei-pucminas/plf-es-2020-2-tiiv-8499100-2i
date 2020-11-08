@@ -47,7 +47,6 @@ const AuthorContainer = (props: RouterProps) => {
 	const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		setLoading(true);
-		debugger;
 
 		try {
 			if (!authorId) {

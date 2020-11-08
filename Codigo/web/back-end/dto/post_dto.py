@@ -6,6 +6,7 @@ class PostDTO:
 		self.date = date
 		self.img = img
 		self.requiresLogin = requiresLogin
+		self.requires_login = requiresLogin
 		self.author = author
 		self.isAd = False
 

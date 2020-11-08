@@ -1,6 +1,6 @@
 from dto.video_category_dto import VideoCategoryDTO
 from model.video_category import VideoCategory
-from dao.dao_mysql import insert, get_all, get, update, delete
+from dao.dao_mysql import insert, get_all, get, start_session, close_session, delete
 
 
 def add_video_category(name):
@@ -20,8 +20,13 @@ def get_video_category(id):
 
 
 def update_video_category(id, name):
-    video_category= VideoCategory(name)
-    update(VideoCategory, id, video_category)
+    s = start_session()
+
+    s.query(VideoCategory).filter(VideoCategory.id == id).update({
+        'name': name
+    })
+
+    close_session(s)
 
 
 def delete_video_category(id):

@@ -1,6 +1,6 @@
 from dto.symbol_category_dto import SymbolCategoryDTO
 from model.symbol_category import SymbolCategory
-from dao.dao_mysql import insert, get_all, get, update, delete
+from dao.dao_mysql import insert, get_all, get, start_session, close_session, delete
 
 
 def add_symbol_category(name):
@@ -20,8 +20,13 @@ def get_symbol_category(id):
 
 
 def update_symbol_category(id, name):
-    symbol_category = SymbolCategory(name)
-    update(SymbolCategory, id, symbol_category)
+    s = start_session()
+
+    s.query(SymbolCategory).filter(SymbolCategory.id == id).update({
+        'name': name
+    })
+
+    close_session(s)
 
 
 def delete_symbol_category(id):

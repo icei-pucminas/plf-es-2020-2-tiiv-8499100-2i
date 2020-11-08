@@ -22,12 +22,6 @@ const ForumViewsCard = (props: PropsType) => {
 			}
 		>
 			<div className={classes["card-title"]}>{props.name}</div>
-			<div className={classes["card-subtitle"]}>
-				Visualizações: {props.views}
-			</div>
-			<div className={classes["card-subtitle"]}>
-				Respostas: {props.responses}
-			</div>
 		</Card>
 	);
 };

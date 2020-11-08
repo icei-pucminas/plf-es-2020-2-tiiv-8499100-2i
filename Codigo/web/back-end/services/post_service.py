@@ -1,7 +1,7 @@
 from dto.post_dto import PostDTO
 from dto.author_dto import AuthorDTO
 from model.post import Post
-from dao.dao_mysql import insert, get_all, get, update, delete
+from dao.dao_mysql import insert, get_all, get, start_session, close_session, delete
 from utils.validate_params import validate_text_param, validate_date_param, validate_boolean_param
 from services.ad_service import get_all_ads
 from datetime import datetime
@@ -42,18 +42,25 @@ def get_post(id):
     return PostDTO(post['id'], post['title'], post['body'], post['date'].isoformat(), post['img'], post['requires_login'], author).__dict__
 
 
-def update_post(id, title, body, date, publish_date, img, requires_login, author_id):
+def update_post(id, title, body, publish_date, img, requires_login, author_id):
+    s = start_session()
 
-    if publish_date is None:
-        publish_date = date
+    if img == None:
+        post = get_post(id)
+        img_path = post['img']
     else:
-        publish_date = __parse_date(publish_date)
+        img_path = storage.upload_image_file(img, "post")
 
-    requires_login = __parse_bool(requires_login.lower())
-    __validate_params(title, body, publish_date, requires_login)
+    s.query(Post).filter(Post.id == id).update({
+        'title': title,
+        'body': body,
+        'publish_date': publish_date,
+        'img': img_path,
+        'requires_login': requires_login == 'true',
+        'author_id': author_id
+    })
 
-    post = Post(title, body, date, publish_date, img, requires_login, author_id)
-    update(Post, id, post)
+    close_session(s)
 
 
 def delete_post(id):
@@ -83,7 +90,7 @@ def format_json(posts, ads_shown):
 
     if ads_shown:
         ads = get_all_ads()
-        ads_number = math.floor(len(posts) / 3)
+        ads_number = math.floor(len(posts) / 4)
         i = len(posts) - 1
         for _ in reversed(posts_json):
             if i != 0 and i % ads_number == 0 and len(ads) > 0:

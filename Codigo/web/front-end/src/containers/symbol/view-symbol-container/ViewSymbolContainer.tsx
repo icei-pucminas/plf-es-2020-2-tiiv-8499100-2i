@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router";
 
-import { fetchPosts } from "../../../store/posts/actions";
-
 import Title from "../../../components/title/Title";
 import Spacer from "../../../layout/spacer/Spacer";
 import Spinner from "../../../components/spinner/Spinner";
@@ -20,7 +18,7 @@ const ViewSymbolContainer = (props: RouteComponentProps) => {
 	const { symbols, status } = useSelector((state: any) => state.symbols);
 
 	const getSymbolHandler = () => {
-		dispatchHook(fetchPosts());
+		dispatchHook(fetchSymbols());
 	};
 
 	const editSymbolHandler = (symbolId: number) => {

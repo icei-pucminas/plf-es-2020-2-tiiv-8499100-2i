@@ -55,8 +55,8 @@ const ViewForumPostsContainer = (props: RouterProps) => {
 		</>
 	) : null;
 
-	const forumEls = forum?.forumPosts.map((fp) => (
-		<React.Fragment key={fp.id}>
+	const forumEls = forum?.forumPosts.map((fp, index) => (
+		<React.Fragment key={index}>
 			<ForumPostCard forumPost={fp} deleteCallback={deleteForumPost} />
 			<Spacer vertical={30} />
 		</React.Fragment>
@@ -71,7 +71,10 @@ const ViewForumPostsContainer = (props: RouterProps) => {
 			{status === "loading" ? (
 				<Spinner />
 			) : status === "success" ? (
-				[firstEl, forumEls]
+				<>
+					{firstEl}
+					{forumEls}
+				</>
 			) : status === "error" ? (
 				"error"
 			) : null}

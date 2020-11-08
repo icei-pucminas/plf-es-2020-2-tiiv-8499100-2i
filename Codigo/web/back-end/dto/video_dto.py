@@ -2,9 +2,10 @@ class VideoDTO:
 	def __init__(self, id, title, date, youtubeUrl, subcategory):
 		self.id = id
 		self.youtubeUrl = youtubeUrl
+		self.youtube_url = youtubeUrl
 		self.title = title
 		self.date = date
-		self.subcategory = subcategory
+		self.subcategory_id = subcategory
 		self.isAd = False
 
 	def get_id(self):

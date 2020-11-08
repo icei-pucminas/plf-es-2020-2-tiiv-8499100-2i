@@ -22,13 +22,6 @@ const PostViewsCard = (props: PropsType) => {
 		>
 			<div className={classes["card-title"]}>{props.name}</div>
 			<Spacer vertical={10} />
-			<div className={classes["card-subtitle"]}>
-				Visualizações: {props.views}
-			</div>
-			<Spacer vertical={10} />
-			<div className={classes["card-subtitle"]}>
-				Viewability média: {props.viewability}
-			</div>
 		</Card>
 	);
 };

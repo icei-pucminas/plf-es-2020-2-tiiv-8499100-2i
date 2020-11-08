@@ -23,7 +23,7 @@ import VideoSubcategoryContainer from "./containers/video-subcategory/video-subc
 import ViewAdContainer from "./containers/ad/view-ad-container/ViewAdContainer";
 import AdContainer from "./containers/ad/ad-container/AdContainer";
 import requiresAuth from "./hoc/requiresAuth";
-import SpecificStats from "./containers/stats-general/StatsGeneral";
+import StatsSpecific from "./containers/stats-specific/StatsSpecific";
 import ViewForumPostsContainer from "./containers/forum/ViewForumPostsContainer";
 import ViewForumContainer from "./containers/forum/ViewForumContainer";
 import PostContainer from "./containers/post/post-container/PostContainer";
@@ -32,6 +32,8 @@ import SymbolCategoryContainer from "./containers/symbol-category/symbol-categor
 import SymbolSubcategoryContainer from "./containers/symbol-subcategory/symbol-subcategory-container/SymbolSubcategoryContainer";
 import VideoContainer from "./containers/video/video-container/VideoContainer";
 import StatsViewPage from "./containers/stats-viewpage/StatsViewPage";
+import StatsUser from "./containers/stats-user/StatsUser";
+import StatsGeneral from "./containers/stats-general/StatsGeneral";
 
 const App = () => {
 	return (
@@ -176,8 +178,14 @@ const App = () => {
 							/>
 							<Route
 								path="/estatisticas-especificas"
-								component={SpecificStats}
+								component={StatsSpecific}
 							/>
+							<Route
+								path="/estatisticas-usuario/:uid"
+								component={StatsGeneral}
+							/>
+							<Route path="/estatisticas-usuario" component={StatsUser} />
+							<Route path="/estatisticas-gerais" component={StatsGeneral} />
 							<Route path="/login" component={LoginContainer} />
 							<Route path="/" component={requiresAuth(HomeContainer)} />
 						</Switch>

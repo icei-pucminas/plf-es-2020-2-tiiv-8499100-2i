@@ -1,9 +1,9 @@
 import React from "react";
 import Card from "../../card/Card";
 import Row from "../../../layout/row/Row";
+import Spacer from "../../../layout/spacer/Spacer";
 
 import * as classes from "./ForumCard.module.css";
-import Spacer from "../../../layout/spacer/Spacer";
 
 type PropsType = {
 	onClick: () => void;
@@ -11,6 +11,13 @@ type PropsType = {
 };
 
 const ForumCard = (props: PropsType) => {
+	const originalPostDate = new Date(props.forum.originalPost.date);
+	const lastUpdateString =
+		props.forum.forumPosts[props.forum.forumPosts.length - 1]?.date;
+	const lastUpdateDate = lastUpdateString
+		? new Date(lastUpdateString)
+		: originalPostDate;
+
 	return (
 		<Card padding={15} onClick={props.onClick}>
 			<Row>
@@ -21,15 +28,15 @@ const ForumCard = (props: PropsType) => {
 			<Spacer vertical={5} />
 			<Row>
 				<span className={classes["forumCard-info"]}>
-					Criado por {props.forum.user} ·{" "}
-					{/* {new Date(props.forum.originalPost.date).toLocaleDateString()} */}
+					Criado por {props.forum.originalPost.user} ·
+					{" " + originalPostDate.toLocaleDateString("pt-br")}
 				</span>
 			</Row>
 			<Spacer vertical={5} />
 			<Row>
 				<span className={classes["forumCard-info"]}>
-					Ultima atualização em{" "}
-					{/* {new Date(props.forum.originalPost.date).toLocaleDateString()} */}
+					Ultima atualização em
+					{" " + lastUpdateDate.toLocaleDateString("pt-br")}
 				</span>
 			</Row>
 			<Spacer vertical={5} />

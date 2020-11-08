@@ -84,6 +84,31 @@ const VideoPage = (props: PropsType) => {
 				</Row>
 				<Spacer vertical={40} />
 				<Row>
+					<TextField
+						label="Título do vídeo"
+						inputAttrs={{
+							id: "title",
+							placeholder: "Exemplo: Dicas sobre GD&T",
+							onChange: onChangeInputHandler,
+							value: props.video.title,
+						}}
+					/>
+				</Row>
+				<Spacer vertical={40} />
+				<Row>
+					<TextField
+						label="URL do vídeo"
+						inputAttrs={{
+							id: "date",
+							type: "date",
+							placeholder: "Exemplo: 22/03/2013",
+							onChange: onChangeInputHandler,
+							value: props.video.date,
+						}}
+					/>
+				</Row>
+				<Spacer vertical={40} />
+				<Row>
 					<Dropdown
 						label="Selecione uma subcategoria..."
 						options={props.videoSubcategories?.map((c) => ({

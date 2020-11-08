@@ -103,7 +103,7 @@ const PostPage = (props: PropsType) => (
 			<Button
 				label={
 					props.type === "new"
-						? "Publicar Post"
+						? "Cadastrar Post"
 						: props.type === "update"
 						? "Atualizar Post"
 						: ""

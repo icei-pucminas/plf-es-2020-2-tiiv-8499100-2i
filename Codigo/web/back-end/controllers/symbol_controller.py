@@ -43,7 +43,10 @@ def get(id):
 def update(id):
     title = request.form['title']
     body = request.form['body']
-    img = request.files.get('img')
+    if len(request.files) > 0:
+        img = request.files.get('img')
+    else:
+        img = None
     subcategory_id = request.form['subcategory_id']
 
     symbol_service.update_symbol(id, title, body, img, subcategory_id)

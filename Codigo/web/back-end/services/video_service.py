@@ -1,6 +1,6 @@
 from dto.video_dto import VideoDTO
 from model.video import Video
-from dao.dao_mysql import insert, get_all, get, update, delete
+from dao.dao_mysql import insert, get_all, get, start_session, close_session, delete
 from services.ad_service import get_all_ads
 import math
 import random
@@ -28,8 +28,15 @@ def get_video(id):
 
 
 def update_video(id, title, youtube_url, subcategory_id):
-    video = Video(title, youtube_url, subcategory_id)
-    update(Video, id, video)
+    s = start_session()
+
+    s.query(Video).filter(Video.id == id).update({
+        'title': title,
+        'youtube_url': youtube_url,
+        'subcategory_id': subcategory_id
+    })
+
+    close_session(s)
 
 
 def delete_video(id):
@@ -45,7 +52,7 @@ def format_json(videos, ads_shown):
 
     if ads_shown:
         ads = get_all_ads()
-        ads_number = math.floor(len(videos) / 3)
+        ads_number = math.floor(len(videos) / 4)
         i = len(videos) - 1
         for _ in reversed(videos_json):
             if i != 0 and i % ads_number == 0 and len(ads) > 0:

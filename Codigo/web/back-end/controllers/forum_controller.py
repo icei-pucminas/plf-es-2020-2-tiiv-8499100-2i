@@ -49,6 +49,7 @@ def insert_post(forum_id):
     date = datetime.datetime.now().isoformat()
     is_original_post = False
 
+
     forum_service.add_post(body, date, is_original_post, uid, forum_id)
     return "forum adicionado."
 

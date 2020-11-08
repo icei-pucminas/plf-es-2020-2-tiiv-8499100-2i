@@ -1,6 +1,6 @@
 from dto.ad_dto import AdDTO
 from model.ad import Ad
-from dao.dao_mysql import insert, get_all, get, update, delete
+from dao.dao_mysql import insert, get_all, get, start_session, close_session, delete
 from credentials import storage
 
 
@@ -19,12 +19,24 @@ def get_all_ads():
 def get_ad(id):
     ad = get(Ad, id)
     ad = ad.__dict__
-    return AdDTO(ad['id'], ad['text'], ad['img']).__dict__
+    return AdDTO(ad['id'], ad['text'], ad['img'], ad['url']).__dict__
 
 
-def update_ad(id, text, img):
-    ad = Ad(text, img)
-    update(Ad, id, ad)
+def update_ad(id, text, img, url):
+    s = start_session()
+    if img == None:
+        ad = get_ad(id)
+        img_path = ad['img']
+    else:
+        img_path = storage.upload_image_file(img, "ad")
+
+    s.query(Ad).filter(Ad.id == id).update({
+        'text': text,
+        'img': img_path,
+        'url': url
+    })
+
+    close_session(s)
 
 
 def delete_ad(id):

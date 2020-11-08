@@ -14,11 +14,7 @@ const Dropdown = (props: PropsType) => {
 	return (
 		<div className={classes["dropdown"]}>
 			<div className={classes["dropdown-input"]}>
-				<select
-					className={classes["dropdown-select"]}
-					defaultValue=""
-					{...props.inputAttrs}
-				>
+				<select className={classes["dropdown-select"]} {...props.inputAttrs}>
 					<option disabled value="">
 						{props.label}
 					</option>

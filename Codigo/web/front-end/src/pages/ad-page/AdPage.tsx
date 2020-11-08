@@ -42,6 +42,18 @@ const AdPage = (props: PropsType) => (
 				/>
 			</Row>
 			<Spacer vertical={40} />
+			<Row>
+				<TextArea
+					label="URL do anúncio"
+					inputAttrs={{
+						id: "url",
+						placeholder: "Exemplo: https://www.google.com/",
+						onChange: props.onChangeTextArea,
+						value: props.ad.url,
+					}}
+				/>
+			</Row>
+			<Spacer vertical={40} />
 			<Button
 				label={
 					props.type === "new"
