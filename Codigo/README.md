@@ -7,4 +7,5 @@ Estrutura de diretórios básica:
   * front-end
   * back-end
 * mobile
+* test
 * database
