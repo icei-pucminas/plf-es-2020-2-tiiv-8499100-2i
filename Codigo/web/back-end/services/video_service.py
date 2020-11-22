@@ -52,7 +52,7 @@ def format_json(videos, ads_shown):
 
     if ads_shown:
         ads = get_all_ads()
-        ads_number = math.floor(len(videos) / 8)
+        ads_number = 2
         i = len(videos) - 1
         for _ in reversed(videos_json):
             if i != 0 and ads_number > 0 and  i % ads_number == 0 and len(ads) > 0:

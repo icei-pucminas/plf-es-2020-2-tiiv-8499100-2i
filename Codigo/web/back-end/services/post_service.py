@@ -6,7 +6,6 @@ from utils.validate_params import validate_text_param, validate_date_param, vali
 from services.ad_service import get_all_ads
 from datetime import datetime
 from credentials import storage
-import math
 import random
 
 
@@ -31,9 +30,11 @@ def get_all_posts():
     posts = get_all(Post)
     return format_json(posts, True)
 
+
 def get_all_posts_without_ads():
     posts = get_all(Post)
     return format_json(posts, False)
+
 
 def get_post(id):
     post = get(Post, id)
@@ -100,7 +101,7 @@ def format_json(posts, ads_shown):
 
     if ads_shown:
         ads = get_all_ads()
-        ads_number = math.floor(len(posts) / 8)
+        ads_number = 2
         i = len(posts) - 1
         for _ in reversed(posts_json):
             if i != 0 and ads_number > 0 and i % ads_number == 0 and len(ads) > 0:
