@@ -1,7 +1,7 @@
 import { YoutubeDataAPI } from "youtube-v3-api";
 import { composeFormData } from "../utils/utils";
 
-const authKey =
+export const authKey =
 	"Basic TmpkamNqWTBhSEpqTjJnNE1tNWtNak5xYTNNME4yTjFhMjpwbVpYSnVOM2RvTkdOeU5ETjRaV3QzYm1Ob2NtVnk=";
 
 const devEnv = window.location.hostname === "localhost";

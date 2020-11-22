@@ -2,7 +2,7 @@ import React, { ChangeEvent, useEffect, useState } from "react";
 import Title from "../../components/title/Title";
 import Grid from "../../layout/grid/Grid";
 import Row from "../../layout/row/Row";
-import { baseURL } from "../../api/api";
+import { authKey, baseURL } from "../../api/api";
 import InfoViewsCard from "../../components/cards-views/info-views-card/InfoViewsCard";
 import Spacer from "../../layout/spacer/Spacer";
 import TextField from "../../components/text-field/TextField";
@@ -140,7 +140,9 @@ const StatsViewPage = () => {
 	};
 
 	const fetchViews = () => {
-		fetch(generateViewURL({ stat, startDate, endDate }))
+		fetch(generateViewURL({ stat, startDate, endDate }), {
+			headers: { "Content-Type": "application/json", Authorization: authKey },
+		})
 			.then((v) => v.json())
 			.then((v) => {
 				setViews(v);
