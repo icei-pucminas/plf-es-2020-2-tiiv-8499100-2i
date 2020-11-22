@@ -6,6 +6,7 @@ class User(Base):
     __tablename__ = 'user'
 
     uid = Column(String, primary_key=True, unique=True)
+    email = Column(String, nullable=False)
     name = Column(String, nullable=False)
     document = Column(String, nullable=False)
     phone = Column(String, nullable=False)

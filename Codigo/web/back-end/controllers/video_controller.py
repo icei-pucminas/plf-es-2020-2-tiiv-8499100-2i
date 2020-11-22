@@ -31,7 +31,7 @@ def get_category(id):
     response = video_service.get_all_videos()
     formatted_categories = []
     for c in response:
-        if (c['subcategory'] == id):
+        if (c['subcategory_id'] == id):
             formatted_categories.append(c)
 
     return jsonify(formatted_categories)

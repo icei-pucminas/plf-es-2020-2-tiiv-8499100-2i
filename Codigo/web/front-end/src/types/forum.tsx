@@ -10,5 +10,6 @@ export type ForumPostType = {
 	body: string;
 	date: string;
 	user: string;
-	isOriginalPost: string;
+	isOriginalPost: boolean;
+	approved: boolean;
 };

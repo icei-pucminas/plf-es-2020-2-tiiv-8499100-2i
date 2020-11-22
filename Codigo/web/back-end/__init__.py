@@ -18,9 +18,11 @@ from controllers.video_view_controller import video_view
 from controllers.calculator_view_controller import calculator_view
 from controllers.forum_view_controller import forum_view
 
+from middlewares.security import Security
+
 app = Flask(__name__)
 app.config.from_pyfile("credentials/config.py")
-app.wsgi_app = app.wsgi_app
+app.wsgi_app = Security(app.wsgi_app)
 
 app.register_blueprint(post)
 app.register_blueprint(forum)
@@ -45,7 +47,7 @@ CORS(app)
 
 @app.route("/")
 def hello():
-    return render_template("index.html")
+    return "2i API"
 
 
 if __name__ == "__main__":

@@ -31,7 +31,7 @@ def get_all():
     return jsonify(response)
 
 
-@user.route("/user/<string:user_id>", methods=['GET'])
+@user.route("/user/<string:uid>", methods=['GET'])
 def get(uid):
     response = user_service.get_user(uid)
     return jsonify(response)
@@ -49,7 +49,7 @@ def login_with_email_and_password():
     return jsonify(user)
 
 
-@user.route("/user/<string:user_id>", methods=['PUT'])
+@user.route("/user/<string:uid>", methods=['PUT'])
 def update(uid):
     name = request.form['name']
     document = request.form['document']
@@ -60,8 +60,7 @@ def update(uid):
     return "Usuário atualizado."
 
 
-@user.route("/user/<string:user_id>", methods=['DELETE'])
+@user.route("/user/<string:uid>", methods=['DELETE'])
 def delete(uid):
-    user_service.delete_user(uid)
     user_service.delete_user(uid)
     return "Usuário deletado."

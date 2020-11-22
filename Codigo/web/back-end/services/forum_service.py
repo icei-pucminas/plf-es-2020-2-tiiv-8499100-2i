@@ -13,7 +13,7 @@ def add_forum(title, body, uid):
     forum = Forum(title)
 
     id = insert(forum)
-    add_post(body, datetime.now().isoformat(), True, uid, id)
+    add_post(body, datetime.now().isoformat(), True, uid, id, False)
 
 
 def get_all_forums():
@@ -36,7 +36,8 @@ def get_forum(id):
                 forum_post['body'],
                 forum_post['date'].isoformat(),
                 forum_post['is_original_post'],
-                user
+                user,
+                forum_post['approved'],
             ).__dict__
         else:
             forum_posts_json.append(
@@ -45,7 +46,8 @@ def get_forum(id):
                     forum_post['body'],
                     forum_post['date'].isoformat(),
                     forum_post['is_original_post'],
-                    user
+                    user,
+                    forum_post['approved'],
                 ).__dict__
             )
 
@@ -59,14 +61,20 @@ def delete_forum(id):
     delete(Forum, id)
 
 
-def add_post(body, date, is_original_post, uid, forum_id):
-    forum_post = ForumPost(body, date, is_original_post, uid, forum_id)
+def add_post(body, date, is_original_post, uid, forum_id, approved):
+    forum_post = ForumPost(body, date, is_original_post, uid, forum_id, approved)
     insert(forum_post)
 
 
 def remove_post(id):
     s = start_session()
     s.query(ForumPost).filter(ForumPost.id == id).update({'body': 'Este post foi deletado.'})
+
+    close_session(s)
+
+def approve_post(id):
+    s = start_session()
+    s.query(ForumPost).filter(ForumPost.id == id).update({'approved': True})
 
     close_session(s)
 
@@ -88,7 +96,8 @@ def format_json(forums):
                     forum_post['body'],
                     forum_post['date'].isoformat(),
                     forum_post['is_original_post'],
-                    user
+                    user,
+                    forum_post['approved'],
                 ).__dict__
             else:
                 forum_posts_json.append(
@@ -97,7 +106,8 @@ def format_json(forums):
                         forum_post['body'],
                         forum_post['date'].isoformat(),
                         forum_post['is_original_post'],
-                        user
+                        user,
+                        forum_post['approved'],
                     ).__dict__
                 )
 

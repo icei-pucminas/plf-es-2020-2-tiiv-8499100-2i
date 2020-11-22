@@ -19,7 +19,7 @@ def get_all_users():
 def get_user(uid):
     user = get(User, uid)
     user = user.__dict__
-    return UserDTO(user['uid'], user['name'], user['document'], user['phone'], user['business_name'], user['is_admin']).__dict__
+    return UserDTO(user['uid'], user['name'], user['document'], user['phone'], user['business_name'], user['is_admin'], user['email']).__dict__
 
 
 def update_user(uid, name, document, phone, business_name):
@@ -44,7 +44,7 @@ def format_json(users):
 
     for user in users:
         user = user.__dict__
-        users_json.append(UserDTO(user['uid'], user['name'], user['document'], user['phone'], user['business_name'], user['is_admin']).__dict__)
+        users_json.append(UserDTO(user['uid'], user['name'], user['document'], user['phone'], user['business_name'], user['is_admin'], user['email']).__dict__)
     return users_json
 
 

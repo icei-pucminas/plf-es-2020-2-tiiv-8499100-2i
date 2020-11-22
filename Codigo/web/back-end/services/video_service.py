@@ -52,10 +52,10 @@ def format_json(videos, ads_shown):
 
     if ads_shown:
         ads = get_all_ads()
-        ads_number = math.floor(len(videos) / 4)
+        ads_number = math.floor(len(videos) / 8)
         i = len(videos) - 1
         for _ in reversed(videos_json):
-            if i != 0 and i % ads_number == 0 and len(ads) > 0:
+            if i != 0 and ads_number > 0 and  i % ads_number == 0 and len(ads) > 0:
                 videos_json.insert(i, random.choice(ads))
             i = i - 1
     return videos_json

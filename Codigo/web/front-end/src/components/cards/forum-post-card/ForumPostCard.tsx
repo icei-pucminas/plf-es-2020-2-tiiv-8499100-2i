@@ -11,6 +11,7 @@ import { ForumPostType, ForumType } from "../../../types/forum";
 type PropsType = {
 	forum?: ForumType;
 	forumPost: ForumPostType;
+	approveForumPost: (forumPostId: number) => void;
 	deleteCallback: (forumPostId: number) => void;
 };
 
@@ -29,13 +30,28 @@ const ForumPostCard = (props: PropsType) => {
 						Por: {props.forumPost.user}
 					</span>
 				</Column>
-				<Button
-					size="small"
-					label="Excluir"
-					buttonAttrs={{
-						onClick: () => props.deleteCallback(props.forumPost.id),
-					}}
-				/>
+				<div style={{ display: "flex" }}>
+					{props.forumPost.approved ? (
+						<Button
+							size="small"
+							label="Excluir"
+							buttonAttrs={{
+								onClick: () => props.deleteCallback(props.forumPost.id),
+							}}
+						/>
+					) : (
+						<>
+							<Button
+								size="small"
+								label="Aprovar"
+								buttonAttrs={{
+									onClick: () => props.approveForumPost(props.forumPost.id),
+								}}
+							/>
+							<Spacer horizontal={20} />
+						</>
+					)}
+				</div>
 			</Row>
 			<Spacer vertical={20} />
 			<Row>{props.forumPost.body}</Row>

@@ -28,14 +28,6 @@ def get(id):
     return jsonify(response)
 
 
-@forum.route("/forum/<int:id>", methods=['PUT'])
-def update(id):
-    title = request.form['title']
-    forum_service.update_forum(id, title)
-
-    return Response(status=201)
-
-
 @forum.route("/forum/<int:forum_id>", methods=['DELETE'])
 def delete(forum_id):
     forum_service.delete_forum(forum_id)
@@ -50,8 +42,14 @@ def insert_post(forum_id):
     is_original_post = False
 
 
-    forum_service.add_post(body, date, is_original_post, uid, forum_id)
+    forum_service.add_post(body, date, is_original_post, uid, forum_id, False)
     return "forum adicionado."
+
+
+@forum.route("/forum/<int:post_id>/approve_post", methods=['PUT'])
+def approve_post(post_id):
+    forum_service.approve_post(post_id)
+    return "forum aprovado."
 
 
 @forum.route("/forum/<int:post_id>/delete_post", methods=['DELETE'])

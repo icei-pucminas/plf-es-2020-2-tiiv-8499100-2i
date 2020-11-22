@@ -10,13 +10,15 @@ class ForumPost(Base):
     body = Column(String, nullable=False)
     date = Column(Date, nullable=False)
     is_original_post = Column(Boolean, nullable=False)
+    approved = Column(Boolean, nullable=False)
     uid = Column(String, ForeignKey("user.uid"))
     forum_id = Column(Integer, ForeignKey('forum.id'))
     user = relationship("User")
 
-    def __init__(self, body, date, is_original_post, uid, forum_id):
+    def __init__(self, body, date, is_original_post, uid, forum_id, approved):
         self.body = body
         self.date = date
         self.is_original_post = is_original_post
         self.uid = uid
         self.forum_id = forum_id
+        self.approved = approved

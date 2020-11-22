@@ -27,7 +27,7 @@ def get_category(id):
     response = symbol_service.get_all_symbols()
     formatted_categories = []
     for c in response:
-        if (c['subcategory'] == id):
+        if (c['subcategory_id'] == id):
             formatted_categories.append(c)
 
     return jsonify(formatted_categories)

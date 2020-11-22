@@ -1,4 +1,5 @@
 import React from "react";
+import { Parser } from "json2csv";
 import { RouteComponentProps } from "react-router";
 
 import Title from "../../components/title/Title";
@@ -6,6 +7,23 @@ import Card from "../../components/card/Card";
 import Spacer from "../../layout/spacer/Spacer";
 
 import Grid from "../../layout/grid/Grid";
+import { getUsersAPI } from "../../api/user";
+
+const download = (filename: string, text: string) => {
+	const element = document.createElement("a");
+	element.setAttribute(
+		"href",
+		"data:text/csv;charset=utf-8," + encodeURIComponent(text)
+	);
+	element.setAttribute("download", filename);
+
+	element.style.display = "none";
+	document.body.appendChild(element);
+
+	element.click();
+
+	document.body.removeChild(element);
+};
 
 const HomeContainer = (props: RouteComponentProps) => {
 	const redirectToGeneralStats = () => {
@@ -47,6 +65,19 @@ const HomeContainer = (props: RouteComponentProps) => {
 	const redirectToAd = () => {
 		props.history.push("/anuncio");
 	};
+	const downloadUserCSV = async () => {
+		try {
+			const users = await getUsersAPI();
+			const fields = ["email", "name", "phone", "business_name"];
+			const opts = { fields };
+
+			const parser = new Parser(opts);
+			const csv = parser.parse(users);
+			download(`usuários-${new Date().toISOString().split("T")[0]}`, csv);
+		} catch (error) {
+			alert("Ocorreu um erro ao formatar os dados dos usuários");
+		}
+	};
 
 	return (
 		<>
@@ -61,6 +92,9 @@ const HomeContainer = (props: RouteComponentProps) => {
 				</Card>
 				<Card onClick={redirectToUserStats}>
 					<strong>Por Usuário</strong>
+				</Card>
+				<Card onClick={downloadUserCSV}>
+					<strong>Exportar Usuários</strong>
 				</Card>
 			</Grid>
 			<Spacer vertical={40} />

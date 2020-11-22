@@ -1,5 +1,5 @@
 class UserDTO:
-	def __init__(self, uid, name, document, phone, businessName, isAdmin):
+	def __init__(self, uid, name, document, phone, businessName, isAdmin, email):
 		self.uid = uid
 		self.name = name
 		self.document = document
@@ -8,6 +8,7 @@ class UserDTO:
 		self.business_name = businessName
 		self.isAdmin = isAdmin
 		self.is_admin = isAdmin
+		self.email = email
 
 	def get_uid(self):
 		return self.uid

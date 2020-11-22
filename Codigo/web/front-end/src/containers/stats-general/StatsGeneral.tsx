@@ -169,7 +169,7 @@ const StatsGeneral = () => {
 
 	useEffect(() => {
 		if (startDate) fetchViews();
-	}, [startDate, endDate, stat, fetchViews]);
+	}, [startDate, endDate, stat]);
 
 	const cards =
 		stat === "post"

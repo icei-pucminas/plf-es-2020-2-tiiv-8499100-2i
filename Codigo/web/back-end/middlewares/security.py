@@ -13,6 +13,8 @@ class Security:
 
         if request.method == "OPTIONS":
             return self.app(environ, start_response)
+        else:
+            print("test")
 
         username = auth.get("username")
         password = auth.get("password")

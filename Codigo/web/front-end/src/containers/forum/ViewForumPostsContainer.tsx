@@ -7,7 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { RouterProps, useParams } from "react-router";
 import { fetchForum } from "../../store/forum/actions";
 import DeleteButton from "../../components/delete-button/DeleteButton";
-import { deleteForumAPI, deleteForumPostAPI } from "../../api/forum";
+import {
+	approveForumPostAPI,
+	deleteForumAPI,
+	deleteForumPostAPI,
+} from "../../api/forum";
 
 const ViewForumPostsContainer = (props: RouterProps) => {
 	const dispatchHook = useDispatch();
@@ -44,11 +48,22 @@ const ViewForumPostsContainer = (props: RouterProps) => {
 		}
 	};
 
+	const approveForumPost = async (forumPostId: number) => {
+		try {
+			await approveForumPostAPI(forumPostId);
+			alert("Post aprovado com sucesso");
+			getForum();
+		} catch (error) {
+			alert("Ocorreu um erro ao aprovar o fórum. Tente novamente mais tarde.");
+		}
+	};
+
 	const firstEl = forum ? (
 		<>
 			<ForumPostCard
 				forumPost={forum.originalPost}
 				forum={forum}
+				approveForumPost={approveForumPost}
 				deleteCallback={deleteForumPost}
 			/>
 			<Spacer vertical={30} />
@@ -57,7 +72,11 @@ const ViewForumPostsContainer = (props: RouterProps) => {
 
 	const forumEls = forum?.forumPosts.map((fp, index) => (
 		<React.Fragment key={index}>
-			<ForumPostCard forumPost={fp} deleteCallback={deleteForumPost} />
+			<ForumPostCard
+				forumPost={fp}
+				approveForumPost={approveForumPost}
+				deleteCallback={deleteForumPost}
+			/>
 			<Spacer vertical={30} />
 		</React.Fragment>
 	));

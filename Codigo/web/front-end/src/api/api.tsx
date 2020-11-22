@@ -8,7 +8,7 @@ const devEnv = window.location.hostname === "localhost";
 
 export const baseURL = devEnv
 	? "http://localhost:5000"
-	: "https://inteligencia-industrial-2i.herokuapp.com";
+	: "https://inteligencia-ind-2i.herokuapp.com";
 
 export const getReq = async (endpoint: string) => {
 	try {
@@ -16,7 +16,7 @@ export const getReq = async (endpoint: string) => {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
-				Authorization: "Basic " + authKey,
+				Authorization: authKey,
 			},
 		});
 		const json = await data.json();
@@ -32,7 +32,7 @@ export const postReq = async (endpoint: string, data: object) => {
 		return fetch(`${baseURL}/${endpoint}`, {
 			method: "POST",
 			headers: {
-				Authorization: "Basic " + authKey,
+				Authorization: authKey,
 			},
 			body: composeFormData(data),
 		});
@@ -46,7 +46,7 @@ export const putReq = async (endpoint: string, data: object) => {
 		return fetch(`${baseURL}/${endpoint}`, {
 			method: "PUT",
 			headers: {
-				Authorization: "Basic " + authKey,
+				Authorization: authKey,
 			},
 			body: composeFormData(data),
 		});
@@ -61,7 +61,7 @@ export const deleteReq = async (endpoint: string) => {
 			method: "DELETE",
 			headers: {
 				"Content-Type": "application/json",
-				Authorization: "Basic " + authKey,
+				Authorization: authKey,
 			},
 		});
 	} catch (error) {

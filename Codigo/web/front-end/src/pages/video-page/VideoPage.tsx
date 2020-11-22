@@ -59,6 +59,15 @@ const VideoPage = (props: PropsType) => {
 	const onChangeInputHandler = (
 		event: ChangeEvent<HTMLInputElement | HTMLSelectElement>
 	) => {
+		let { value } = event.target;
+		if (event.target.id === "youtube_url" && value.includes("youtu.be")) {
+			const lastSlash = value.lastIndexOf("/");
+
+			if (lastSlash !== -1) {
+				const id = value.substring(lastSlash + 1, value.length);
+				event.target.value = "https://www.youtube.com/watch?v=" + id;
+			}
+		}
 		props.onChangeInput(event);
 		fetchYoutubeInfo(event.target.value);
 	};

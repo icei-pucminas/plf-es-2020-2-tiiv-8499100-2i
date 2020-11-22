@@ -1,11 +1,12 @@
 class ForumPostDTO:
 
-    def __init__(self, id, body, date, isOriginalPost, user):
+    def __init__(self, id, body, date, isOriginalPost, user, approved):
         self.id = id
         self.body = body
         self.date = date
         self.isOriginalPost = isOriginalPost
         self.user = user
+        self.approved = approved
 
     def get_id(self):
         return self.id

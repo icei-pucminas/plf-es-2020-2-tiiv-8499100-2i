@@ -93,16 +93,17 @@ def format_json(posts, ads_shown):
                 post['date'].isoformat(),
                 post['img'],
                 post['requires_login'],
-                author
+                author,
+                post['publish_date']
             ).__dict__
         )
 
     if ads_shown:
         ads = get_all_ads()
-        ads_number = math.floor(len(posts) / 4)
+        ads_number = math.floor(len(posts) / 8)
         i = len(posts) - 1
         for _ in reversed(posts_json):
-            if i != 0 and i % ads_number == 0 and len(ads) > 0:
+            if i != 0 and ads_number > 0 and i % ads_number == 0 and len(ads) > 0:
                 posts_json.insert(i, random.choice(ads))
             i = i - 1
 
